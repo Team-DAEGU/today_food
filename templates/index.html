@@ -23,7 +23,7 @@
         <p>별도의 회원가입 없이 누구나 나만의 맛집을 다른 사람들과 공유해보세요!</p>
     </div>
     <div class="category">
-        <button type="button" id="양식" class="btn btn-outline-dark" onclick="category(this.id)">전체</button>
+        <button type="button" id="전체" class="btn btn-outline-dark" onclick="category(this.id)">전체</button>
         <button type="button" id="양식" class="btn btn-outline-dark" onclick="category(this.id)">🍝 양식</button>
         <button type="button" id="일식" class="btn btn-outline-dark" onclick="category(this.id)">🍣 일식</button>
         <button type="button" id="중식" class="btn btn-outline-dark" onclick="category(this.id)">🍜 중식</button>
@@ -32,30 +32,7 @@
         <button type="button" id="카페" class="btn btn-outline-dark" onclick="category(this.id)">☕ 카페</button>
     </div>
     <div class="store-list row row-cols-1 row-cols-md-3 g-4  m-4">
-        <div class="col"> <!-- card 시작-->
-            <div class="card h-100">
-                <img class="store-thumnail" src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230424_5%2F1682302646218MXvRG_JPEG%2FIMG_20230422_011828_042.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <p>
-                        <span class="title">레스팅07 </span>
-                        <span class="address">대구 중구 동성로3길 67 2층 레스팅07</span>
-                    </p>
-                    <p class="tag-like">
-                        <span>
-                            <span class="tag">😋 음식이 맛있어요</span>
-                            <span class="tag">💗 친절해요</span>
-                            <span class="tag">🛋️ 인테리어가 멋져요</span>
-                        </span>
-                        <span>
-                            <a class="like-btn" onclick="change_like()">
-                                <img class="like" src="../static/images/heart-light.png">
-                            </a>
-                            0
-                        </span>
-                    </p>
-                </div>
-            </div>
-        </div> <!-- card 끝-->
+        
     </div>
     <script src="../static/js/index.js"></script>
 </body>

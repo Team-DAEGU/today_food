@@ -5,12 +5,65 @@ $(document).ready(function () {
 });
 
 // 처음 접속 시 모든 카테고리의 게시글을 가져옴(카테고리 구분x)
-async function index(){
+async function index() {
     let res = await fetch('/index', {
         method: "GET",
     })
     let res_json = await res.json()
-    console.log(res_json)
+    let rows = res_json['response']
+    rows.forEach((data) => {
+        let title = data['title'];
+        let address = data['address'];
+        let tags = data['tags'];
+        let img_url = data['img_url'];
+        let like = data['like'];
+        let like_url = "";
+        if (like != 0) {
+            like_url = "../static/images/heart-fill.png";
+        } else {
+            like_url = "../static/images/heart-light.png";
+        }
+        let temp_html = `<div class="col"> <!-- card 시작-->
+                                <div class="card h-100">
+                                    <img class="store-thumnail" src="${img_url}" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <p>
+                                            <span class="title">${title} </span>
+                                            <span class="address">${address}</span>
+                                        </p>
+                                        <p class="tag-like">
+                                            <span class="tag-list">
+                                                <span class="tag">😋 음식이 맛있어요</span>
+                                                <span class="tag">💗 친절해요</span>
+                                                <span class="tag">🛋️ 인테리어가 멋져요</span>
+                                            </span>
+                                            <span>
+                                                <a class="like-btn" onclick="change_like()">
+                                                    <img class="like" src="${like_url}">
+                                                </a>
+                                                ${like}
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div> <!-- card 끝-->`;
+        $(".store-list").append(temp_html);
+        let tag_list = $(".store-list .col:last-child .tag-list");
+        tag_list.empty();
+        tags.forEach(tag => {
+            let temp_html = `<span class="tag">${tag}</span>`;
+            tag_list.append(temp_html);
+        });
+    });
+}
+
+
+function category(id) {
+    if (id == "전체"){
+        index();
+    } else{
+        show_category_list(id)
+    }
 }
 
 function show_category_list(category) {
@@ -59,7 +112,7 @@ function show_category_list(category) {
             tags.forEach(tag => {
                 let temp_html = `<span class="tag">${tag}</span>`;
                 tag_list.append(temp_html);
-            });            
+            });
         });
     });
 }
