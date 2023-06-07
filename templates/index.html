@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>대구 오늘 뭐먹지?</title>
+    <!-- BootsStrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <!-- css 파일 -->
+    <link rel="stylesheet" href="/static/css/index.css" type="text/css">
+
+</head>
+<body>
+    <div class="banner">
+        <h1>대구 오늘 뭐먹지?</h1>
+        <p>대구의 추천 맛집을 알려주고, 다른 사용자들에게 맛집을 추천할 수 있는 서비스입니다.</p>
+        <p>별도의 회원가입 없이 누구나 나만의 맛집을 다른 사람들과 공유해보세요!</p>
+    </div>
+    <div class="category">
+        <button type="button" id="양식" class="btn btn-outline-dark" onclick="category(this.id)">전체</button>
+        <button type="button" id="양식" class="btn btn-outline-dark" onclick="category(this.id)">🍝 양식</button>
+        <button type="button" id="일식" class="btn btn-outline-dark" onclick="category(this.id)">🍣 일식</button>
+        <button type="button" id="중식" class="btn btn-outline-dark" onclick="category(this.id)">🍜 중식</button>
+        <button type="button" id="한식" class="btn btn-outline-dark" onclick="category(this.id)">🍚 한식</button>
+        <button type="button" id="술집" class="btn btn-outline-dark" onclick="category(this.id)">🍻 술집</button>
+        <button type="button" id="카페" class="btn btn-outline-dark" onclick="category(this.id)">☕ 카페</button>
+    </div>
+    <div class="posts">
+        <ul id="posts_list">
+            <li>테스트용</li>
+        </ul>
+    </div>
+    <!-- js파일 -->
+    <script src="/static/js/index.js"></script>
+</body>
+</html>
