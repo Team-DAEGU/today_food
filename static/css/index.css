@@ -1,3 +1,4 @@
+
 .banner {
     background-image: url("https://images.unsplash.com/photo-1626844223006-ce12691d2b17?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2787&q=80");
     background-position: center;
@@ -28,3 +29,43 @@
     margin-left: 20px;
     border-radius: 20px;
 }
+
+* {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.title {
+    font-size: 18pt;
+    font-weight: 500;
+}
+
+.address {
+    font-weight: 300;
+}
+
+.tag {
+    font-size: 10pt;
+    background-color: #E6E6E6;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.like {
+    height: 30px;
+}
+
+.like-btn {
+    text-decoration:none;
+}
+
+.tag-like {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.store-thumnail {
+    height: 300px;
+    object-fit: cover;
+}
+

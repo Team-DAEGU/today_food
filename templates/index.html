@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +15,6 @@
         crossorigin="anonymous"></script>
     <!-- css 파일 -->
     <link rel="stylesheet" href="/static/css/index.css" type="text/css">
-
 </head>
 <body>
     <div class="banner">
@@ -31,12 +31,32 @@
         <button type="button" id="술집" class="btn btn-outline-dark" onclick="category(this.id)">🍻 술집</button>
         <button type="button" id="카페" class="btn btn-outline-dark" onclick="category(this.id)">☕ 카페</button>
     </div>
-    <div class="posts">
-        <ul id="posts_list">
-            <li>테스트용</li>
-        </ul>
+    <div class="store-list row row-cols-1 row-cols-md-3 g-4  m-4">
+        <div class="col"> <!-- card 시작-->
+            <div class="card h-100">
+                <img class="store-thumnail" src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230424_5%2F1682302646218MXvRG_JPEG%2FIMG_20230422_011828_042.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p>
+                        <span class="title">레스팅07 </span>
+                        <span class="address">대구 중구 동성로3길 67 2층 레스팅07</span>
+                    </p>
+                    <p class="tag-like">
+                        <span>
+                            <span class="tag">😋 음식이 맛있어요</span>
+                            <span class="tag">💗 친절해요</span>
+                            <span class="tag">🛋️ 인테리어가 멋져요</span>
+                        </span>
+                        <span>
+                            <a class="like-btn" onclick="change_like()">
+                                <img class="like" src="../static/images/heart-light.png">
+                            </a>
+                            0
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div> <!-- card 끝-->
     </div>
-    <!-- js파일 -->
-    <script src="/static/js/index.js"></script>
+    <script src="../static/js/index.js"></script>
 </body>
 </html>
