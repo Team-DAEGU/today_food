@@ -23,16 +23,45 @@
         <p>별도의 회원가입 없이 누구나 나만의 맛집을 다른 사람들과 공유해보세요!</p>
     </div>
     <div class="category">
-        <button type="button" id="전체" class="btn btn-outline-dark" onclick="category(this.id)">전체</button>
-        <button type="button" id="양식" class="btn btn-outline-dark" onclick="category(this.id)">🍝 양식</button>
-        <button type="button" id="일식" class="btn btn-outline-dark" onclick="category(this.id)">🍣 일식</button>
-        <button type="button" id="중식" class="btn btn-outline-dark" onclick="category(this.id)">🍜 중식</button>
-        <button type="button" id="한식" class="btn btn-outline-dark" onclick="category(this.id)">🍚 한식</button>
-        <button type="button" id="술집" class="btn btn-outline-dark" onclick="category(this.id)">🍻 술집</button>
-        <button type="button" id="카페" class="btn btn-outline-dark" onclick="category(this.id)">☕ 카페</button>
+        <button type="button" id="전체" class="btn btn-outline-dark" onclick="location.href='/'">전체</button>
+        <button type="button" id="양식" class="btn btn-outline-dark" onclick="location.href='/list/양식'">🍝 양식</button>
+        <button type="button" id="일식" class="btn btn-outline-dark" onclick="location.href='/list/양식'">🍣 일식</button>
+        <button type="button" id="중식" class="btn btn-outline-dark" onclick="location.href='/list/양식'">🍜 중식</button>
+        <button type="button" id="한식" class="btn btn-outline-dark" onclick="location.href='/list/양식'">🍚 한식</button>
+        <button type="button" id="술집" class="btn btn-outline-dark" onclick="location.href='/list/양식'">🍻 술집</button>
+        <button type="button" id="카페" class="btn btn-outline-dark" onclick="location.href='/list/양식'">☕ 카페</button>
     </div>
     <div class="store-list row row-cols-1 row-cols-md-3 g-4  m-4">
-        
+        {% for e in data %}
+        <div class="col"> <!-- card 시작-->
+            <div class="card h-100">
+                <img class="store-thumnail" src="{{ e['img_url'] }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p>
+                        <span class="title">{{ e['title'] }} </span>
+                        <span class="address">{{ e['address'] }}</span>
+                    </p>
+                    <p class="tag-like">
+                        <span class="tag-list">
+                            {% for tag in e['tags'] %}
+                            <span class="tag">{{ tag }}</span>
+                            {% endfor %}
+                        </span>
+                        <span>
+                            <a class="like-btn" onclick="change_like()">
+                                {% if e['like'] == 0 %}
+                                <img class="like" src="../static/images/heart-light.png">
+                                {% else %}
+                                <img class="like" src="../static/images/heart-fill.png">
+                                {% endif %}
+                            </a>
+                            {{ e['like'] }}
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div> <!-- card 끝-->
+        {% endfor %}
     </div>
     <script src="../static/js/index.js"></script>
 </body>
