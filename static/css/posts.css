@@ -1,0 +1,155 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 80px;
+}
+
+.container2 {
+  display: flex;
+  flex-direction: column;
+  border-radius: 1%;
+  border: 3px solid gray;
+  padding: 50px;
+  width: 800px;
+}
+
+.container2 label {
+  display: flex;
+  align-items: center;
+    margin-bottom: 5px;
+}
+.container2 input[type="text"],
+.container2 textarea {
+  margin-top: 1px;
+  border-radius: 10px;
+  font-weight: bold;
+  width: 600px;
+  font-size: 16px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.container2>button {
+    width: 300px;
+    height: 100px;
+
+    background-color: transparent;
+    color: white;
+
+    border-radius: 50px;
+    border: 1px solid white;
+
+    margin-top: 10px;
+}
+
+.mytitle>button:hover {
+    border: 2px solid white;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+label {
+  width: 200px;
+  font-weight: bold;
+}
+
+input[type="text"],
+textarea,
+input[type="file"] {
+  width: 300px;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+}
+
+.input-group label {
+  margin-right: 10px;
+}
+
+.horizontal-group {
+  display: flex;
+  align-items: center;
+}
+.horizontal {
+    display: flex; /* Flexbox를 사용하여 자식 요소들의 배치 방법 설정 */
+    align-items: center; /* 수직 정렬 방법 지정 */
+  }
+  
+
+.category-button {
+    background-color: transparent;
+    color: black;
+    font-weight: bold;
+    border-radius: 100px;
+    border: 1px solid black;
+    margin-right: 10px;
+    display:flex;
+align-items:center;
+justify-content:center;
+
+
+  }
+  
+.category-buttons {
+    margin-right: 1px; /* 왼쪽 여백 조절 */
+    margin-right: 100px;
+     /* Flexbox를 사용하여 자식 버튼(button)요소들의 배치 방법 설정*/
+     display:flex;
+     
+      /*
+       * justify-content 속성 값을 "flex-start" 로 지정하여 
+       * 가장 왼쪽부터 시작하는 형태로 정렬합니다.
+       */ 
+      justify-content :flex-start;
+  }
+  .horizontal-group {
+    display: flex; /* Flexbox를 사용하여 자식 요소들의 배치 방법 설정 */
+    align-items: center; /* 수직 정렬 방법 지정 */
+  }
+  
+  
+
+  .category-label {
+    flex-basis: 100px;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+.category-button.selected {
+    background-color: orange;
+    color: white;
+    border: 2px solid orange;
+  }
+
+  .category-select {
+  flex-grow: 1;
+}
+   
+  .category-button:hover {
+    border: 2px solid 
+  }
+
+  .btn {
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    background-color: transparent;
+    
+
+    border-radius: 50px;
+    border: 1px solid black;
+    font-weight: bold;
+
+    margin-top: 10px;
+  }
