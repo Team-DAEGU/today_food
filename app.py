@@ -19,5 +19,14 @@ def get_list(category):
     category_list = list(db.test.find({'category': category}, {'_id': False}))
     return render_template('index.html', data=category_list)
 
+# 좋아요수 증가시키기
+@app.route('/update/like', methods=['POST'])
+def update_like():
+    num = int(request.form['num'])
+    post = db.test.find_one({'num': num}) # 해당 게시글찾고
+    like_count = post['like'] # 좋아요수 가져온 후
+    db.test.update_one({'num': num}, {'$set': {'like': like_count + 1}}) # 좋아요수 업데이트
+    return jsonify({'response': '좋아요수 증가!'})
+
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5001, debug=True)
