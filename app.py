@@ -26,7 +26,7 @@ def update_like():
     post = db.test.find_one({'num': num})
     like_count = post['like']
     db.test.update_one({'num': num}, {'$set': {'like': like_count + 1}})
-    return jsonify({'response': '좋아요수 증가!'})
+    return jsonify({'msg': '좋아요수 증가!'})
 
 # 게시글 상세페이지 조회
 @app.route('/detail/<int:num>')

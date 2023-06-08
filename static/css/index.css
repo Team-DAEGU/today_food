@@ -1,16 +1,34 @@
+/* 배너 */
 .banner {
     background-image: url("https://images.unsplash.com/photo-1626844223006-ce12691d2b17?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2787&q=80");
     background-position: center;
     background-size: cover;
     width: 100%;
-    height: 300px;
+    height: 400px;
 
     color: white;
-    text-align: center;
     font-size: 23px;
-    padding-top: 50px;
+    text-align: center;
 }
 
+.blur {
+    /* -webkit-backdrop-filter: blur(5px); */
+    backdrop-filter: blur(2px);
+    height: 400px;
+    padding-top: 100px;
+}
+
+.banner h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.banner p {
+    font-size: 14pt;
+    margin-bottom: 5px;
+}
+/* 카테고리 */
 .category {
     margin-top: 40px;
     width: 100%;
@@ -29,10 +47,35 @@
     border-radius: 20px;
 }
 
+/* 카드뷰 */
+.card {
+    border-radius: 20px;
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.store-thumnail {
+    height: 300px;
+    object-fit: cover;
+    border-radius: 40px;
+}
 
 .title {
     font-size: 18pt;
     font-weight: 500;
+}
+
+.like {
+    height: 30px;
+}
+
+.like-btn {
+    text-decoration:none;
+}
+
+.title-like {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .address {
@@ -46,22 +89,21 @@
     border-radius: 5px;
 }
 
-.like {
-    height: 30px;
+/* 게시글 작성 버튼 */
+.float {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 80px;
+    height: 80px;
+    background-color: white;
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 2px 5px 10px #999;
+    padding-top: 10px;
 }
 
-.like-btn {
-    text-decoration:none;
+.bi-pen {
+    font-size: 28pt;
+    color: black;
 }
-
-.tag-like {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.store-thumnail {
-    height: 300px;
-    object-fit: cover;
-}
-
