@@ -1,73 +1,70 @@
 <html>
+
 <head>
-    <title >상세정보</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
-        .box {
-            margin-bottom: 200px;
-            display: flex;
-            gap: 20px;
-            padding: 20px 20px; 
-            margin: 50px 50px; 
-            font-weight: bold; 
-            color: #565656; 
-            background: #E4FCFF; 
-            box-shadow: 0px 0px 0px 10px #E4FCFF; 
-            border: dashed 2px #1DC1D6; 
-            border-radius: 8px
-        }
-        .flex-container {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .info {
-            font-size: 35px;
-            font-family: 'Nanum Pen Script', cursive;
-        }
-    </style>
+    <title>상세정보</title>
+    <!-- BootsStrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/static/css/default.css" type="text/css">
     <link rel="stylesheet" href="/static/css/index.css" type="text/css">
+    <link rel="stylesheet" href="/static/css/detail.css" type="text/css">
 </head>
+
 <body>
-    <h1  style="margin: 50px; border-radius: 15px 15px 15px 0; border-bottom: 5px solid #B9C4C4; padding: 20px 20px; background: #CEDADA; font-weight: bold; width: 250px;">상세 정보확인</h1>
-    <div class="box">
-        <img style="width:500px; height:500px;" src="{{ data['img_url'] }}" alt="Image">
-        <div class="flex-container">
-            <h2 class="info">Title: {{ data['title'] }}</h2>
-            <h2 class="info">Address: {{ data['address'] }}</h2>
-            <h2 class="info">Category: {{ data['category'] }}</h2>
-            <h2 class="info">Comment: {{ data['comment'] }}</h2>
-            <p class="tag-like">
-                <span class="tag-list">
-                    {% for tag in data['tags'] %}
-                    <span class="tag">{{ tag }}</span>
-                    {% endfor %}
-                </span>
-                <span>
-                    <a class="like-btn">
-                        {% if data['like'] == 0 %}
-                        <img class="like" src="/static/images/heart-light.png">
-                        {% else %}
-                        <img class="like" src="/static/images/heart-fill.png">
-                        {% endif %}
-                    </a>
-                    {{ data['like'] }}
-                </span>
-            </p>
+    <div class="page-top">
+        <h1 class="page-title">상세 정보확인</h1>
+        <div class="btn-group">
+            <a href="javascript:window.history.back();" class="btn btn-outline-dark active" aria-current="page">뒤로</a>
+            <a href="#" class="btn btn-outline-dark">수정</a>
+            <a href="#" class="btn btn-outline-dark">삭제</a>
         </div>
     </div>
-    <div>
-        <button onclick="history.back()" style="background-color: skyblue;
-        color: white;
-        border: none;
-        width: 500px;
-        height: 120px;
-        font-size: 60px;
-        font-family: 'Nanum Pen Script', cursive;
-        position: relative;
-        left: 1000px;
-        ">뒤로가기</button>
-      </div>
+    <div class="card">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{{ data['img_url'] }}" class="store-img img-fluid" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body h-100 p-4">
+                    <div class="row">
+                        <div class="title-category">
+                            <span class="info-title me-4">{{ data['title'] }}</span>
+                            <span class="info-category">{{ data['category'] }}</span>
+                        </div>
+                        <p class="info-address mb-4">{{ data['address'] }}</p>
+                        <p class="info-comment">{{ data['comment'] }}</p>
+                    </div>
+                    <div class="tag-like">
+                        <div class="tag-list">
+                            {% for tag in data['tags'] %}
+                            <span class="tag">{{ tag }}</span>
+                            {% endfor %}
+                        </div>
+                        <div class="">
+                            <a class="like-btn">
+                                {% if data['like'] == 0 %}
+                                <img class="like" src="/static/images/heart-light.png">
+                                {% else %}
+                                <img class="like" src="/static/images/heart-fill.png">
+                                {% endif %}
+                            </a>
+                            {{ data['like'] }}
+                        </div>                
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mt-4">
+        <div class="card-body">
+            <p class="info-title">댓글</p>
+        </div>
+    </div>
 </body>
+
 </html>
