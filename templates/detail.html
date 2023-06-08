@@ -8,7 +8,7 @@
             display: flex;
             gap: 20px;
             padding: 20px 20px; 
-            margin: 2em 50px; 
+            margin: 50px 50px; 
             font-weight: bold; 
             color: #565656; 
             background: #E4FCFF; 
@@ -26,6 +26,8 @@
             font-family: 'Nanum Pen Script', cursive;
         }
     </style>
+    <link rel="stylesheet" href="/static/css/default.css" type="text/css">
+    <link rel="stylesheet" href="/static/css/index.css" type="text/css">
 </head>
 <body>
     <h1  style="margin: 50px; border-radius: 15px 15px 15px 0; border-bottom: 5px solid #B9C4C4; padding: 20px 20px; background: #CEDADA; font-weight: bold; width: 250px;">상세 정보확인</h1>
@@ -36,7 +38,36 @@
             <h2 class="info">Address: {{ data['address'] }}</h2>
             <h2 class="info">Category: {{ data['category'] }}</h2>
             <h2 class="info">Comment: {{ data['comment'] }}</h2>
+            <p class="tag-like">
+                <span class="tag-list">
+                    {% for tag in data['tags'] %}
+                    <span class="tag">{{ tag }}</span>
+                    {% endfor %}
+                </span>
+                <span>
+                    <a class="like-btn">
+                        {% if data['like'] == 0 %}
+                        <img class="like" src="/static/images/heart-light.png">
+                        {% else %}
+                        <img class="like" src="/static/images/heart-fill.png">
+                        {% endif %}
+                    </a>
+                    {{ data['like'] }}
+                </span>
+            </p>
         </div>
     </div>
+    <div>
+        <button onclick="history.back()" style="background-color: skyblue;
+        color: white;
+        border: none;
+        width: 500px;
+        height: 120px;
+        font-size: 60px;
+        font-family: 'Nanum Pen Script', cursive;
+        position: relative;
+        left: 1000px;
+        ">뒤로가기</button>
+      </div>
 </body>
 </html>
