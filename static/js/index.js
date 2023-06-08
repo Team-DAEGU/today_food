@@ -12,3 +12,8 @@ $('.like-btn').click(function(){
         window.location.reload();
     });
 });
+
+$('.col').click(async function(){
+    let num = $(this).attr('id')
+    window.location.href = `http://localhost:5000/detail/${num}`
+})
