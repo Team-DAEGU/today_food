@@ -6,6 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>게시글 등록</title>
+  <!-- BootsStrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
   <link rel="stylesheet" href="/static/css/default.css" type="text/css">
   <link rel="stylesheet" href="/static/css/posts.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -14,74 +20,78 @@
 
 <body>
   <div class="container">
-    <h1>맛집 추천하기</h1>
-    <div class="container2">
-      <form>
-        <div class="horizontal-group">
-          <label for="restaurant-name"><strong>상호명</strong></label>
-          <input type="text" id="restaurant-name" name="restaurant-name">
-        </div><br>
-
-        <div class="horizontal-group">
-          <label for="address"><strong>주소</strong></label>
-          <input type="text" id="address" name="address">
-        </div><br>
-
-        <div class="horizontal-group">
-          <label for="food-type"><strong>카테고리</strong></label>
-          <select class="form-select" aria-label="Default select example" id="foodie">
-            <option>음식 종류를 선택해주세요!</option>
-            <option value="양식">🍝 양식</option>
-            <option value="일식">🍣 일식</option>
-            <option value="중식">🥟 중식</option>
-            <option value="한식">🍚 한식</option>
-            <option value="술집">🍺 술집</option>
-            <option value="카페">☕️ 카페</option>
-          </select>
-        </div><br>
-
-        <div class="horizontal-group">
-          <label for="comment"><strong>코멘트</strong></label>
-          <input type="text" id="comment" name="comment">
-        </div><br>
-
-        <div class="horizontal-group">
-          <label for="tag"><strong>태그</strong></label>
-          <select class="form-select" multiple aria-label="multiple select example" id="tag">
-            <option selected>태그를 선택해주세요! (ctrl+클릭으로 다중 선택 가능!)</option>
-            <option value="😋 음식이 맛있어요">😋 음식이 맛있어요</option>
-            <option value="💗 친절해요">💗 친절해요</option>
-            <option value="🛋️ 인테리어가 멋져요">🛋️ 인테리어가 멋져요</option>
-            <option value="👩🏻‍🍳 특별한 메뉴가 있어요">👩🏻‍🍳 특별한 메뉴가 있어요</option>
-            <option value="💐 특별한 날 가기 좋아요">💐 특별한 날 가기 좋아요</option>
-            <option value="🤑 가성비가 좋아요">🤑 가성비가 좋아요</option>
-            <option value="🌱 재료가 신선해요">🌱 재료가 신선해요</option>
-            <option value="🍚 양이 많아요">🍚 양이 많아요</option>
-            <option value="✨ 매장이 청결해요">✨ 매장이 청결해요</option>
-            <option value="🕯️ 분위기가 좋아요">🕯️ 분위기가 좋아요</option>
-          </select>
-        </div><br>
-
-        <div class="horizontal-group">
-          <label for="photo"><strong>이미지 url</strong></label>
-          <input type="url" id="url" name="url">
-        </div><br>
-
-        <div class="horizontal-group">
-          <label for="nickname-input">닉네임</label>
-          <input type="name" id="name" name="name">
-        </div><br>
-
-        <div class="horizontal-group">
-          <label for="password-input">Password</label><br />
-          <input type="password" id="password-input">
-        </div><br>
-
-        <div class="button-container">
-          <button type="button" class="btn btn-outline-secondary" style="background-color: white;" onclick="goBack()">뒤로가기</button>
-          <button type="button" class="btn btn-outline-secondary" style="background-color: white;" onclick="save_post()">등록하기</button>
-        </div>
-      </form>
+    <h1 class="page-title mb-4">맛집 추천하기</h1>
+    <div class="card">
+      <div class="card-body">
+        <form>
+          <div class="row w-100">
+            <label class="col-3" for="restaurant-name"><strong>상호명</strong></label>
+            <input class="col" type="text" id="restaurant-name" name="restaurant-name">
+          </div><br>
+  
+          <div class="row w-100">
+            <label class="col-3" for="address"><strong>주소</strong></label>
+            <input class="col" type="text" id="address" name="address">
+          </div><br>
+  
+          <div class="row w-100">
+            <label class="col-3" for="food-type"><strong>카테고리</strong></label>
+            <select class="col form-select" aria-label="Default select example" id="foodie">
+              <option>음식 종류를 선택해주세요!</option>
+              <option value="양식">🍝 양식</option>
+              <option value="일식">🍣 일식</option>
+              <option value="중식">🥟 중식</option>
+              <option value="한식">🍚 한식</option>
+              <option value="술집">🍺 술집</option>
+              <option value="카페">☕️ 카페</option>
+            </select>
+          </div><br>
+  
+          <div class="row w-100">
+            <label class="col-3" for="comment"><strong>코멘트</strong></label>
+            <input class="col" type="text" id="comment" name="comment">
+          </div><br>
+  
+          <div class="row w-100">
+            <label class="col-3" for="tag"><strong>태그</strong></label>
+            <select class="col form-select" multiple aria-label="multiple select example" id="tag">
+              <option selected>태그를 선택해주세요! (ctrl+클릭으로 다중 선택 가능!)</option>
+              <option value="😋 음식이 맛있어요">😋 음식이 맛있어요</option>
+              <option value="💗 친절해요">💗 친절해요</option>
+              <option value="🛋️ 인테리어가 멋져요">🛋️ 인테리어가 멋져요</option>
+              <option value="👩🏻‍🍳 특별한 메뉴가 있어요">👩🏻‍🍳 특별한 메뉴가 있어요</option>
+              <option value="💐 특별한 날 가기 좋아요">💐 특별한 날 가기 좋아요</option>
+              <option value="🤑 가성비가 좋아요">🤑 가성비가 좋아요</option>
+              <option value="🌱 재료가 신선해요">🌱 재료가 신선해요</option>
+              <option value="🍚 양이 많아요">🍚 양이 많아요</option>
+              <option value="✨ 매장이 청결해요">✨ 매장이 청결해요</option>
+              <option value="🕯️ 분위기가 좋아요">🕯️ 분위기가 좋아요</option>
+            </select>
+          </div><br>
+  
+          <div class="row w-100">
+            <label class="col-3" for="photo"><strong>이미지 url</strong></label>
+            <input class="col" type="url" id="url" name="url">
+          </div><br>
+  
+          <div class="row w-100">
+            <label class="col-3" for="nickname-input">닉네임</label>
+            <input class="col" type="name" id="name" name="name">
+          </div><br>
+  
+          <div class="row w-100">
+            <label class="col-3" for="password-input">Password</label><br />
+            <input class="col" type="password" id="password-input">
+          </div><br>
+  
+          <div class="row align-self-end me-2">
+            <button type="button" class="btn btn-outline-dark btn-lg col me-2"
+              onclick="goBack()">뒤로가기</button>
+            <button type="button" class="btn btn-dark btn-lg col"
+              onclick="save_post()">등록하기</button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
   <script src="/static/js/posts.js"></script>
