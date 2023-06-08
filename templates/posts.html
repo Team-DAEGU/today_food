@@ -7,6 +7,8 @@
   <title>게시글 등록</title>
   <link rel="stylesheet" href="/static/css/posts.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=638897c834de0b494df4f47f9c031aac"></script>
+
 </head>
 
 
@@ -22,7 +24,8 @@
 
       <div class="horizontal-group">
         <label for="address"><strong>주소</strong></label>
-        <input type="text" id="address" name="address">
+        <button onclick='findAddress()'>주소찾기</button>
+        <div id="map"></div>
       </div><br>
       
       <div class="horizontal-group">
