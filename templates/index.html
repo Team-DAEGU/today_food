@@ -34,7 +34,7 @@
     </div>
     <div class="store-list row row-cols-1 row-cols-md-3 g-4  m-4">
         {% for e in data %}
-        <div class="col"> <!-- card 시작-->
+        <div class="col" id="{{ e['num'] }}"> <!-- card 시작-->
             <div class="card h-100">
                 <img class="store-thumnail" src="{{ e['img_url'] }}" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -47,7 +47,7 @@
                             {% endfor %}
                         </span>
                         <span>
-                            <a class="like-btn" onclick="change_like()">
+                            <a class="like-btn">
                                 {% if e['like'] == 0 %}
                                 <img class="like" src="/static/images/heart-light.png">
                                 {% else %}
