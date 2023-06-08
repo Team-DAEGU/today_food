@@ -28,14 +28,11 @@ def update_like():
     db.test.update_one({'num': num}, {'$set': {'like': like_count + 1}}) # 좋아요수 업데이트
     return jsonify({'response': '좋아요수 증가!'})
 
-#db 데이터 가져오기
-collection = db['test']
-
-@app.route('/')
-def home():
-    document = collection.find_one({'num' : 1})
-    print(document)
+# 게시글 상세페이지 조회
+@app.route('/detail/<int:num>')
+def detail(num):
+    document = db.test.find_one({'num' : num})
     return render_template('detail.html', data=document)
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=5001, debug=True)
+    app.run('0.0.0.0', port=5000, debug=True)
