@@ -29,10 +29,35 @@
     border-radius: 20px;
 }
 
+/* 카드뷰 */
+.card {
+    border-radius: 20px;
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.store-thumnail {
+    height: 300px;
+    object-fit: cover;
+    border-radius: 40px;
+}
 
 .title {
     font-size: 18pt;
     font-weight: 500;
+}
+
+.like {
+    height: 30px;
+}
+
+.like-btn {
+    text-decoration:none;
+}
+
+.title-like {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .address {
@@ -46,22 +71,21 @@
     border-radius: 5px;
 }
 
-.like {
-    height: 30px;
+/* 게시글 작성 버튼 */
+.float {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 80px;
+    height: 80px;
+    background-color: white;
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 2px 5px 10px #999;
+    padding-top: 10px;
 }
 
-.like-btn {
-    text-decoration:none;
+.bi-pen {
+    font-size: 28pt;
+    color: black;
 }
-
-.tag-like {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.store-thumnail {
-    height: 300px;
-    object-fit: cover;
-}
-
