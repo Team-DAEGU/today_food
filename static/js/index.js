@@ -25,8 +25,9 @@ $('.category > button').click(function() {
 });
 
 // 게시글 클릭시 상세페이지로 이동
-$('.col').click(async function(){
-    let num = $(this).attr('id')
+$('.store-thumbnail').click(async function(){
+    let num = $(this).parents('.col').attr('id');
+    console.log(num);
     window.location.href = `/detail/${num}`
 })
 
