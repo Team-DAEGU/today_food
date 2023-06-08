@@ -1,0 +1,42 @@
+<html>
+<head>
+    <title >상세정보</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+        .box {
+            margin-bottom: 200px;
+            display: flex;
+            gap: 20px;
+            padding: 20px 20px; 
+            margin: 2em 50px; 
+            font-weight: bold; 
+            color: #565656; 
+            background: #E4FCFF; 
+            box-shadow: 0px 0px 0px 10px #E4FCFF; 
+            border: dashed 2px #1DC1D6; 
+            border-radius: 8px
+        }
+        .flex-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .info {
+            font-size: 35px;
+            font-family: 'Nanum Pen Script', cursive;
+        }
+    </style>
+</head>
+<body>
+    <h1  style="margin: 50px; border-radius: 15px 15px 15px 0; border-bottom: 5px solid #B9C4C4; padding: 20px 20px; background: #CEDADA; font-weight: bold; width: 250px;">상세 정보확인</h1>
+    <div class="box">
+        <img style="width:500px; height:500px;" src="{{ data['img_url'] }}" alt="Image">
+        <div class="flex-container">
+            <h2 class="info">Title: {{ data['title'] }}</h2>
+            <h2 class="info">Address: {{ data['address'] }}</h2>
+            <h2 class="info">Category: {{ data['category'] }}</h2>
+            <h2 class="info">Comment: {{ data['comment'] }}</h2>
+        </div>
+    </div>
+</body>
+</html>
