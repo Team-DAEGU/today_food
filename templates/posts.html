@@ -9,19 +9,16 @@
   <link rel="stylesheet" href="/static/css/default.css" type="text/css">
   <link rel="stylesheet" href="/static/css/posts.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=638897c834de0b494df4f47f9c031aac"></script>
-  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services"
-    &gt;&lt;></script>
 </head>
 
 
 <body>
   <div class="container">
-    <h1>게시글 등록</h1>
+    <h1>맛집 추천하기</h1>
     <div class="container2">
       <form>
-        <div class="input-group">
-          <label for="restaurant-name"><strong>맛집 이름</strong></label>
+        <div class="horizontal-group">
+          <label for="restaurant-name"><strong>상호명</strong></label>
           <input type="text" id="restaurant-name" name="restaurant-name">
         </div><br>
 
@@ -31,14 +28,14 @@
         </div><br>
 
         <div class="horizontal-group">
-          <label for="food-type"><strong>분류</strong></label>
+          <label for="food-type"><strong>카테고리</strong></label>
           <select class="form-select" aria-label="Default select example" id="foodie">
-            <option selected>음식 카테고리</option>
-            <option value="양식">🍝양식</option>
-            <option value="일식">🍣일식</option>
-            <option value="중식">🥟중식</option>
-            <option value="한식">🍚한식</option>
-            <option value="술집">🍺술집</option>
+            <option>음식 종류를 선택해주세요!</option>
+            <option value="양식">🍝 양식</option>
+            <option value="일식">🍣 일식</option>
+            <option value="중식">🥟 중식</option>
+            <option value="한식">🍚 한식</option>
+            <option value="술집">🍺 술집</option>
             <option value="카페">☕️ 카페</option>
           </select>
         </div><br>
@@ -50,7 +47,19 @@
 
         <div class="horizontal-group">
           <label for="tag"><strong>태그</strong></label>
-          <input type="text" id="tag" name="tag">
+          <select class="form-select" multiple aria-label="multiple select example" id="tag">
+            <option selected>태그를 선택해주세요! (ctrl+클릭으로 다중 선택 가능!)</option>
+            <option value="😋 음식이 맛있어요">😋 음식이 맛있어요</option>
+            <option value="💗 친절해요">💗 친절해요</option>
+            <option value="🛋️ 인테리어가 멋져요">🛋️ 인테리어가 멋져요</option>
+            <option value="👩🏻‍🍳 특별한 메뉴가 있어요">👩🏻‍🍳 특별한 메뉴가 있어요</option>
+            <option value="💐 특별한 날 가기 좋아요">💐 특별한 날 가기 좋아요</option>
+            <option value="🤑 가성비가 좋아요">🤑 가성비가 좋아요</option>
+            <option value="🌱 재료가 신선해요">🌱 재료가 신선해요</option>
+            <option value="🍚 양이 많아요">🍚 양이 많아요</option>
+            <option value="✨ 매장이 청결해요">✨ 매장이 청결해요</option>
+            <option value="🕯️ 분위기가 좋아요">🕯️ 분위기가 좋아요</option>
+          </select>
         </div><br>
 
         <div class="horizontal-group">
@@ -59,18 +68,18 @@
         </div><br>
 
         <div class="horizontal-group">
-          <label for="nickname-input">닉네임:</label>
+          <label for="nickname-input">닉네임</label>
           <input type="name" id="name" name="name">
         </div><br>
 
         <div class="horizontal-group">
-          <label for="password-input">Password:</label><br />
+          <label for="password-input">Password</label><br />
           <input type="password" id="password-input">
         </div><br>
 
         <div class="button-container">
-          <button type="button" class="btn btn-outline-secondary" onclick="goBack()">뒤로가기</button>
-          <button type="button" class="btn btn-outline-secondary" onclick="save_post()">등록하기</button>
+          <button type="button" class="btn btn-outline-secondary" style="background-color: white;" onclick="goBack()">뒤로가기</button>
+          <button type="button" class="btn btn-outline-secondary" style="background-color: white;" onclick="save_post()">등록하기</button>
         </div>
       </form>
     </div>

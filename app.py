@@ -46,7 +46,10 @@ def register_post():
     address = request.form['address']
     category = request.form['categories']
     comment = request.form['comment']
-    tags = request.form['tag']
+    tags = []
+    tag = request.form['tag'].split(",")
+    for i in tag:
+        tags.append(i)
     img_url=request.form['url']
     name=request.form['name']
     password=request.form['password']
