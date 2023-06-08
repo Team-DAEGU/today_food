@@ -20,8 +20,6 @@ def register_post():
     img_url=request.form['url']
     name=request.form['name']
     password=request.form['password']
-    print(name)
-    print(password)
     posts_list = list(db.test.find({}, {'_id': False}))
     num = len(posts_list) + 1
 
@@ -42,7 +40,7 @@ def register_post():
     db.test.insert_one(post_data)
     return jsonify({'msg':'등록이 완료되었습니다.'})
 
-
-
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5502, debug=True)
+    
+    
