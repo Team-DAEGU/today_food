@@ -60,6 +60,7 @@ a, a:visited, a:hover, a:active {
 }
 
 .store-thumbnail {
+    cursor: pointer;
     height: 300px;
     object-fit: cover;
     border-radius: 40px;
@@ -71,6 +72,7 @@ a, a:visited, a:hover, a:active {
 }
 
 .like {
+    cursor: pointer;
     height: 30px;
 }
 
