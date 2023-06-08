@@ -5,7 +5,7 @@ src="https://code.jquery.com/jquery-3.6.0.min.js"
     async function save_post(){
         let restaurant_name = $('#restaurant-name').val()
         let address = $('#address').val()
-        let foddie = $('#foddie').val()
+        let foodie = $('#foodie').val()
         let comment = $('#comment').val()
         let tag =$('#tag').val()
         let url =  $('#url').val()
@@ -13,11 +13,11 @@ src="https://code.jquery.com/jquery-3.6.0.min.js"
         let password = $('#password-input').val()
 
         let formData = new FormData();
-   
+
         
         formData.append("restaurant_name",restaurant_name)
         formData.append("address",address)
-        formData.append("categories",foddie)
+        formData.append("categories",foodie)
         formData.append("comment",comment)
         formData.append("tag", tag)
         formData.append("url", url)
@@ -39,5 +39,5 @@ src="https://code.jquery.com/jquery-3.6.0.min.js"
             alert('잘못된 요청')
         }
     }
-  
+
 
