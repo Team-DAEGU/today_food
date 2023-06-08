@@ -8,12 +8,12 @@ $('.like-btn').click(function(){
 
     // 좋아요수 증가시키기
     fetch('/update/like', { method: "POST", body: formData, }).then((response) => response.json()).then((data) => {
-        console.log(data["response"]);
+        console.log(data["msg"]);
         window.location.reload();
     });
 });
 
 $('.col').click(async function(){
     let num = $(this).attr('id')
-    window.location.href = `http://localhost:5000/detail/${num}`
+    window.location.href = `/detail/${num}`
 })
