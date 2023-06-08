@@ -63,7 +63,8 @@ def register_post():
         'tags': tags,
         'image_url':  img_url,
         'name':name,
-        'password':password
+        'password':password,
+        'like': 0
     }
     db.test.insert_one(post_data)
     return jsonify({'msg':'등록이 완료되었습니다.'})

@@ -1,12 +1,16 @@
 <html larg="en">
+
 <head>
-  
+
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>게시글 등록</title>
   <link rel="stylesheet" href="/static/css/posts.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=638897c834de0b494df4f47f9c031aac"></script>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services"
+    &gt;&lt;></script>
 </head>
 
 
@@ -14,20 +18,20 @@
   <div class="container">
     <h1>게시글 등록</h1>
     <div class="container2">
-    <form>
-      <div class="input-group">
-        <label for="restaurant-name"><strong>맛집 이름</strong></label>
-        <input type="text" id="restaurant-name" name="restaurant-name">
-      </div><br>
+      <form>
+        <div class="input-group">
+          <label for="restaurant-name"><strong>맛집 이름</strong></label>
+          <input type="text" id="restaurant-name" name="restaurant-name">
+        </div><br>
 
-      <div class="horizontal-group">
-        <label for="address"><strong>주소</strong></label>
-        <input type="text" id="address" name="address">
-      </div><br>
-      
-      <div class="horizontal-group">
-        <label for="food-type"><strong>분류</strong></label>
-        <select class="form-select" aria-label="Default select example" id="foodie">
+        <div class="horizontal-group">
+          <label for="address"><strong>주소</strong></label>
+          <input type="text" id="address" name="address">
+        </div><br>
+
+        <div class="horizontal-group">
+          <label for="food-type"><strong>분류</strong></label>
+          <select class="form-select" aria-label="Default select example" id="foodie">
             <option selected>음식 카테고리</option>
             <option value="양식">🍝양식</option>
             <option value="일식">🍣일식</option>
@@ -36,42 +40,41 @@
             <option value="술집">🍺술집</option>
             <option value="카페">☕️ 카페</option>
           </select>
-      </div><br>
-      
+        </div><br>
 
-      <div class="horizontal-group">
-        <label for="comment"><strong>코멘트</strong></label>
-        <input type="text" id="comment" name="comment" >
-      </div><br>
+        <div class="horizontal-group">
+          <label for="comment"><strong>코멘트</strong></label>
+          <input type="text" id="comment" name="comment">
+        </div><br>
 
-      <div class="horizontal-group">
-        <label for="tag"><strong>태그</strong></label>
-        <input type="text" id="tag" name="tag">
-      </div><br>
+        <div class="horizontal-group">
+          <label for="tag"><strong>태그</strong></label>
+          <input type="text" id="tag" name="tag">
+        </div><br>
 
-      <div class="horizontal-group">
-        <label for="photo"><strong>이미지 url</strong></label>
-        <input type="url" id="url" name="url">
-      </div><br>
+        <div class="horizontal-group">
+          <label for="photo"><strong>이미지 url</strong></label>
+          <input type="url" id="url" name="url">
+        </div><br>
 
-      <div class="horizontal-group">
-      <label for="nickname-input">닉네임:</label>
-      <input type="name" id="name" name="name">
-    </div><br>
+        <div class="horizontal-group">
+          <label for="nickname-input">닉네임:</label>
+          <input type="name" id="name" name="name">
+        </div><br>
 
-      <div class="horizontal-group">
-      <label for ="password-input">Password:</label><br/>
-        <input type = "password" id ="password-input">
-      </div><br>
+        <div class="horizontal-group">
+          <label for="password-input">Password:</label><br />
+          <input type="password" id="password-input">
+        </div><br>
 
-
-
-
-    <button type="button" class="btn btn-outline-secondary" onclick="save_post()">등록하기</button>
-
-  </form>
-</div>
-</div>
-  <script src="/static/js/posts.js"></script> 
+        <div class="button-container">
+          <button type="button" class="btn btn-outline-secondary" onclick="goBack()">뒤로가기</button>
+          <button type="button" class="btn btn-outline-secondary" onclick="save_post()">등록하기</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="/static/js/posts.js"></script>
 </body>
+
 </html>

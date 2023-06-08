@@ -135,12 +135,20 @@ justify-content:center;
   .category-select {
   flex-grow: 1;
 }
+
+.button-container {
+  display: flex;
+  justify-content: space-between; /* 두 버튼 사이에 공간 배분 */
+  gap: 50px; /* 두튼 사이의 간격 설정 */
+}
+
    
   .category-button:hover {
     border: 2px solid 
   }
 
   .btn {
+    display: inline-block;
     width: 200px;
     height: 50px;
     font-size: 20px;
