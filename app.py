@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, jsonify, redirect
 from pymongo import MongoClient
 # MongoDB USER ID : daegu / PW : 1234
 client = MongoClient('mongodb+srv://daegu:1234@cluster0.zuemero.mongodb.net/?retryWrites=true&w=majority')
-db = client.test
+db = client.TodayFood
 
 app = Flask(__name__)
 
@@ -10,28 +10,28 @@ app = Flask(__name__)
 @app.route('/')
 def home():
     # 전체 맛집 리스트 가져오기
-    all_posts = list(db.test.find({},{'_id':False}))
+    all_posts = list(db.data.find({},{'_id':False}))
     return render_template('index.html', data=all_posts)
 
 # 카테고리별 맛집 리스트 가져오기
 @app.route('/list/<category>')
 def get_list(category):
-    category_list = list(db.test.find({'category': category}, {'_id': False}))
+    category_list = list(db.data.find({'category': category}, {'_id': False}))
     return render_template('index.html', data=category_list)
 
 # 좋아요수 증가시키기
 @app.route('/update/like', methods=['POST'])
 def update_like():
     num = int(request.form['num'])
-    post = db.test.find_one({'num': num})
+    post = db.data.find_one({'num': num})
     like_count = post['like']
-    db.test.update_one({'num': num}, {'$set': {'like': like_count + 1}})
+    db.data.update_one({'num': num}, {'$set': {'like': like_count + 1}})
     return jsonify({'msg': '좋아요수 증가!'})
 
 # 게시글 상세페이지 조회
 @app.route('/detail/<int:num>')
 def detail(num):
-    document = db.test.find_one({'num' : num})
+    document = db.data.find_one({'num' : num})
     return render_template('detail.html', data=document)
 
 # 게시글 작성 페이지 랜더링
@@ -54,7 +54,7 @@ def register_post():
     name=request.form['name']
     password=request.form['password']
 
-    posts_list = list(db.test.find({}, {'_id': False}))
+    posts_list = list(db.data.find({}, {'_id': False}))
     num = len(posts_list) + 1
 
     post_data = {
@@ -69,8 +69,8 @@ def register_post():
         'password':password,
         'like': 0
     }
-    db.test.insert_one(post_data)
+    db.data.insert_one(post_data)
     return jsonify({'msg':'등록이 완료되었습니다.'})
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=5000, debug=True)
+    app.run('0.0.0.0', port=5001, debug=True)

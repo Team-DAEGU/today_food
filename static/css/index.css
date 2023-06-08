@@ -22,12 +22,18 @@
     font-size: 3rem;
     font-weight: 700;
     margin-bottom: 20px;
+    color: white;
 }
 
 .banner p {
     font-size: 14pt;
     margin-bottom: 5px;
 }
+
+a, a:visited, a:hover, a:active {
+    text-decoration: none;
+}
+
 /* 카테고리 */
 .category {
     margin-top: 40px;
@@ -53,7 +59,7 @@
     box-shadow: 0 5px 10px rgba(0,0,0,.2);
 }
 
-.store-thumnail {
+.store-thumbnail {
     height: 300px;
     object-fit: cover;
     border-radius: 40px;
@@ -66,10 +72,6 @@
 
 .like {
     height: 30px;
-}
-
-.like-btn {
-    text-decoration:none;
 }
 
 .title-like {

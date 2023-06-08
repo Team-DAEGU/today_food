@@ -22,25 +22,25 @@
 <body>
     <div class="banner">
         <div class="blur">
-            <h1>대구 오늘 뭐먹지?</h1>
+            <a href="/"><h1>대구 오늘 뭐먹지?</h1></a>
             <p>대구의 추천 맛집을 알려주고, 다른 사용자들에게 맛집을 추천할 수 있는 서비스입니다.</p>
             <p>별도의 회원가입 없이 누구나 나만의 맛집을 다른 사람들과 공유해보세요!</p>
         </div>
     </div>
     <div class="category">
-        <button type="button" id="전체" class="btn btn-outline-dark" onclick="location.href='/'">전체</button>
-        <button type="button" id="양식" class="btn btn-outline-dark" onclick="location.href='/list/양식'">🍝 양식</button>
-        <button type="button" id="일식" class="btn btn-outline-dark" onclick="location.href='/list/일식'">🍣 일식</button>
-        <button type="button" id="중식" class="btn btn-outline-dark" onclick="location.href='/list/중식'">🍜 중식</button>
-        <button type="button" id="한식" class="btn btn-outline-dark" onclick="location.href='/list/한식'">🍚 한식</button>
-        <button type="button" id="술집" class="btn btn-outline-dark" onclick="location.href='/list/술집'">🍻 술집</button>
-        <button type="button" id="카페" class="btn btn-outline-dark" onclick="location.href='/list/카페'">☕ 카페</button>
+        <button type="button" id="전체" class="btn btn-outline-dark">전체</button>
+        <button type="button" id="양식" class="btn btn-outline-dark">🍝 양식</button>
+        <button type="button" id="일식" class="btn btn-outline-dark">🍣 일식</button>
+        <button type="button" id="중식" class="btn btn-outline-dark">🍜 중식</button>
+        <button type="button" id="한식" class="btn btn-outline-dark">🍚 한식</button>
+        <button type="button" id="술집" class="btn btn-outline-dark">🍻 술집</button>
+        <button type="button" id="카페" class="btn btn-outline-dark">☕ 카페</button>
     </div>
     <div class="store-list row row-cols-1 row-cols-md-3 g-4  m-4">
         {% for e in data %}
         <div class="col" id="{{ e['num'] }}"> <!-- card 시작-->
             <div class="card h-100">
-                <img class="store-thumnail p-4" src="{{ e['img_url'] }}" class="card-img-top" alt="...">
+                <img class="store-thumbnail p-4" src="{{ e['img_url'] }}" class="card-img-top" alt="...">
                 <div class="card-body p-4 pt-0">
                     <p class="title-like mb-1">
                         <span class="title">{{ e['title'] }}</span>
