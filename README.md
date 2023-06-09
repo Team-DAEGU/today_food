@@ -56,32 +56,6 @@
 
 <!-- summary 아래 한칸 공백 두어야함 -->
 ## 오류 상황
-접은 내용
-
-## 오류 메시지
-접은 내용
-  
-  ## 시도
-```python
-
-```
-  
-  ## 원인 파악
-접은 내용
-  
-  ## 해결
-```python
-
-```
-  
-</details>
-
-
-<details>
-<summary>1. DB 컬렉션의 특정 필드 배열에 값이 추가되지 않고 수정되는 문제</summary>
-
-<!-- summary 아래 한칸 공백 두어야함 -->
-## 오류 상황
 게시글의 상세페이지에서 댓글 작성 api를 구현하던 중 댓글 작성 시 해당 게시글의 댓글 배열에 값이 추가 되지 않고 변경되는 상황 발생
 
 ## 오류 메시지
@@ -89,17 +63,36 @@
   
   ## 시도
 ```python
-
+@app.route('/detail/<int:num>/reply', methods = ['POST'])
+def detail_reply(num):
+    target_post = db.data.find_one({'num':num}, {'_id':False})
+    get_reply = request.form['reply']
+		
+		# num 값으로 찾은 쿼리에 reply 배열을 가져오고, reply가 없는 경우 빈 배열 가져옴
+    reply = target_post.get('reply', [])
+    reply.append(get_reply) # 배열에 사용자가 입력한 값 추가
+		
+		# reply 필드에 새 배열로 수정
+    db.test.update_one({'num':num}, {'$set': {'reply':reply}})
+    return jsonify({'msg':'작성 완료'})
 ```
   
+  댓글은 추가할 때 마다 배열에 담겨야하고, 기존 게시글에 배열이 있을지 없을지 알 수 없다고 판단하여 num으로 조회한 쿼리에서 reply 필드를 가져오고 없다면 빈 배열을 가져오도록 코드 작성. 그리고 reply 필드에서 가져온 배열에 사용자로부터 입력받은 값을 append 함수를 사용하여 넣고, 기존 게시글에서 reply 필드를 수정한 reply 필드로 업데이트 했더니 수정할 때 마다 reply 배열에 값이 추가되지 않고 기존 값(0번째 index)이 계속 수정되었음
   ## 원인 파악
-접은 내용
+reply 필드에 $set 연산자로 새로운 reply 배열로 수정했기 때문에 계속해서 값이 추가되지 않고, 값이 변경되었다.
   
   ## 해결
 ```python
-
+@app.route('/detail/<int:num>/reply', methods = ['POST'])
+def detail_reply(num):
+    get_reply = request.form['reply']
+    db.test.update_one({'num':num}, {'$push': {'reply':get_reply}})
+    return jsonify({'msg':'작성 완료'})
 ```
-  
+  배열을 만들어야 된다는 생각 자체가 잘못되었었다.
+그냥 reply 필드에 $push 연산자를 사용하여 사용자로부터 입력받은 값을 넣으면 자동으로 배열이 되어버린다.
+만약 해당 쿼리의 reply 필드에 값이 없을 경우 값이 추가되고, 값이 있는 경우에도 배열의 끝에 추가된다.
+처음에 find_one으로 해당 쿼리를 찾을 필요도 없다(update_one 하면서 num 값으로 찾기 때문!)
 </details>
 
 
@@ -153,6 +146,34 @@
 ```
   
 </details>
+
+
+
+<details>
+<summary>1. DB 컬렉션의 특정 필드 배열에 값이 추가되지 않고 수정되는 문제</summary>
+
+<!-- summary 아래 한칸 공백 두어야함 -->
+## 오류 상황
+접은 내용
+
+## 오류 메시지
+접은 내용
+  
+  ## 시도
+```python
+
+```
+  
+  ## 원인 파악
+접은 내용
+  
+  ## 해결
+```python
+
+```
+  
+</details>
+
 
 
 
