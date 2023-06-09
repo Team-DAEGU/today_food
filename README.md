@@ -206,7 +206,34 @@ def detail(num):
 
 ## 오류 상황
 카카오맵 API를 사용하는과정에서, Geocoder 오류가 발생해서, 카카오맵에 마커와, 맵이 표시되지않음.
+```python
+// 지도를 생성합니다
+var map = new kakao.maps.Map(mapContainer, mapOption);
 
+// 주소-좌표 변환 객체를 생성합니다
+var geocoder = new kakao.maps.services.Geocoder();
+
+
+// 주소로 좌표를 검색합니다
+geocoder.addressSearch(address, function (result, status) {
+// 정상적으로 검색이 완료됐으면
+if (status === kakao.maps.services.Status.OK) {
+var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+markerPosition = new kakao.maps.LatLng(result[0].y, result[0].x);
+// 결과값으로 받은 위치를 마커로 표시합니다
+var marker = new kakao.maps.Marker({
+map: map,
+position: coords
+
+});
+// 인포윈도우로 장소에 대한 설명을 표시합니다
+var infowindow = new kakao.maps.InfoWindow({
+content: '<div class="info-window target">' +
+'<h3>' + name + '</h3>' +
+'<p id="addressClick">' + address + '</p>' +
+'</div>'
+});
+```
 ## 오류 메시지
 	Uncaught TypeError: Cannot read properties of undefined (reading 'Geocoder')
 	at posts.js:32:40
@@ -225,12 +252,22 @@ appkey=APIKEY"&libraries=services></script>
   ## 원인 파악
 카카오맵에서 Service 라이브러리를 제공하는지 알지 못함 (공식문서체크 X)
 코드를 haed태그 바로 아래에 붙여넣으니 해결.
-  
-  ## 해결
 ```python
-
+// 인포윈도우로 장소에 대한 설명을 표시합니다
+var infowindow = new kakao.maps.InfoWindow({
+content: '<div class="info-window target">' +
+'<h3>' + name + '</h3>' +
+'<p id="addressClick">' + address + '</p>' +
+'</div>'
+});
+<head>
+<script type="text/javascript"
+src="//dapi.kakao.com/v2/maps/sdk.js?appkey=638897c834de0b494df4f47f9c031aac&libraries=services"></script>
 ```
+## 해결
   <head> 태그 바로아래 키 삽입하니 해결
+	  
+	  
 ## 느낀점
   코드를 그냥 붙여넣지말고, 해당 사이트 명세사항을 꼼꼼히 살펴보자..
 
