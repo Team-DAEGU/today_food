@@ -5,8 +5,6 @@ function goBack() {
 }
 
 async function save_post(){
-
-
     let restaurant_name = $('#restaurant-name').val()
     if (restaurant_name == "") {
         alert("상호명을 입력해주세요!")
