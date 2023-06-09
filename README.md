@@ -1,9 +1,9 @@
-# Today_Food
-미니 프로젝트 오늘 뭐먹지? Repository 입니다.
+# 대구 오늘 뭐먹지?
+대구의 맛집을 추천 및 공유하는 서비스
 
 [Git_Hub]([https://google.com](https://github.com/Team-DAEGU/today_food))
 
-[배포_링크](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/)
+[Project_Link](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/)
 
 ## 🎈팀소개
 안녕하세요! 이노베이션 캠프에서 백엔드 개발자가 되기 위해 모인 **Team. 대구 맛잘알**입니다.  
@@ -36,16 +36,82 @@
 ![그림1](https://github.com/Team-DAEGU/today_food/assets/62596783/1315dfa2-68e9-48e5-82c6-1a5b561a2549)
 
 ## 🕹 API
-|기능|URL|Method|Request|Resonse|Branch_Name|비고|
-|------|---|---|------|---|---| -------|
-|전체 맛집 리스트 가져오기|[ALL LIST](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/)|GET|테스트1|테스트2|index||
-|카테고리별 맛집 리스트 가져오기|[LIST](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/list/<category>)|GET|테스트1|테스트2|feat/index-cardview||
-|게시글 작성(맛집 추천하기)|[POST](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/api/posts)|POST|테스트1|테스트2|posts||
-|게시글 상세(추천 맛집 상세 페이지)|[DETAIL](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/detail/<int:num>)|GET|테스트1|테스트2|detail|게시글의 num은 url 파라미터로 전달|
-|좋아요수 증가시키기|[LIKE](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/update/like)|POST|테스트1|테스트2|feat/like||
-|추천 맛집 포스팅 삭제|[DELETE](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/detail/<int:num>/delete)|PUT|테스트1|테스트2|detail/update|게시글의 num은 url 파라미터로 전달|
-|추천 맛집 포스팅 수정|[REVISE](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/detail/<int:num>/update)|DELETE|테스트1|테스트2|detail/delete|게시글의 num은 url 파라미터로 전달|
-|상세 페이지 댓글작성|[COMMENT](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/detail/<int:num>/reply)|POST|- reply : 게시글의 댓글 (문자열)|테스트2|detail/delete|게시글의 num은 url 파라미터로 전달|
+|기능|URL|Method|Request|Resonse|비고|
+|------|---|---|------|---| -------|
+|전체 맛집 리스트 가져오기|[ALL LIST](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/)|GET||아래 확인||
+|카테고리별 맛집 리스트 가져오기|[LIST](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/list/<category>)|GET||아래 확인||
+|게시글 작성(맛집 추천하기)|[POST](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/api/posts)|POST|아래 확인|“msg”  : “등록 완료!”|posts||
+|게시글 상세(추천 맛집 상세 페이지)|[DETAIL](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/detail/<int:num>)|GET|테스트1|아래 확인|게시글의 num은 url 파라미터로 전달|
+|좋아요수 증가시키기|[LIKE](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/update/like)|POST|- num: 게시글 고유순번(int)|{“response”: “좋아요수 증가!”}||
+|추천 맛집 포스팅 삭제|[DELETE](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/detail/<int:num>/delete)|PUT|아래 확인|{“msg”  : “수정 완료!”}|게시글의 num은 url 파라미터로 전달|
+|추천 맛집 포스팅 수정|[REVISE](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/detail/<int:num>/update)|DELETE|- name : 게시글 작성자(문자열)</br>- password : 게시글 비밀번호(문자열)|{“msg”  : “삭제 완료!”}|게시글의 num은 url 파라미터로 전달|
+|상세 페이지 댓글작성|[COMMENT](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/detail/<int:num>/reply)|POST|- reply : 게시글의 댓글 (문자열)|{“msg”  : “작 완료!”}|게시글의 num은 url 파라미터로 전달|
+
+## Request
+<details>
+<summary>추천 맛집 글 작성</summary>
+- restaurant_name:  맛집 이름 (문자열)</br>
+- address: 주소 (문자열)</br>
+- category: 가게 종류 (문자열)</br>
+- comment: 코멘트(리뷰) 내용 (문자열, optional)</br>
+- tags[] : 태그 리스트(배열, optional )</br>
+- url : 이미지 URL</br>
+- name : 게시글 작성자 닉네임(문자열)</br>
+- password : 게시글 비밀번호(문자열)</br>
+</details>
+
+<details>
+<summary>추천한 맛집 삭제</summary>
+- restaurant_name:  맛집 이름 (문자열, optional)</br>
+- address: 주소 (문자열, optional)</br>
+- category: 가게 종류 (문자열, optional)</br>
+- comment: 코멘트(리뷰) 내용 (문자열, optional)</br>
+- tags[] : 태그 리스트(배열, optional )</br>
+- url : 이미지 URL (optional)</br>
+- name : 게시글 작성자(문자열)</br>
+- password : 게시글 비밀번호(문자열)</br>
+</details>
+
+## resonse
+<details>
+<summary>전체 맛집 리스트 조회</summary>
+- num : 게시글 번호(숫자형)</br>
+- title: 맛집 이름 (문자열)</br>
+- address: 주소 (문자열)</br>
+- category: 가게 종류 (문자열)</br>
+- comment: 코멘트(리뷰) 내용 (문자열, optional)</br>
+- tags[] : 태그 리스트(배열, optional )</br>
+- img_url : 이미지 URL</br>
+- like : 좋아요 개수(숫자형)</br>
+- reply[]: 게시글의 댓글(배열, optional)</br>
+- name : 게시글 작성자(문자열)</br>
+- password : 게시글 비밀번호(문자열)</br>
+</details>
+
+<details>
+<summary>전체 맛집 리스트 가져오기(선택한 카테고리의 맛집)</summary>
+- restaurant_name:  맛집 이름 (문자열)</br>
+- address: 주소 (문자열)</br>
+- category: 가게 종류 (문자열)</br>
+- comment: 코멘트(리뷰) 내용 (문자열, optional)</br>
+- tags[] : 태그 리스트(배열, optional )</br>
+- url : 이미지 URL</br>
+- name : 게시글 작성자 닉네임(문자열)</br>
+- password : 게시글 비밀번호(문자열)</br>
+</details>
+
+<details>
+<summary>추천 맛집의 상세 페이지 조회</summary>
+- restaurant_name:  맛집 이름 (문자열)</br>
+- address: 주소 (문자열)</br>
+- category: 가게 종류 (문자열)</br>
+- comment: 코멘트(리뷰) 내용 (문자열, optional)</br>
+- tags[] : 태그 리스트(배열, optional )</br>
+- url : 이미지 URL</br>
+- name : 게시글 작성자 닉네임(문자열)</br>
+- password : 게시글 비밀번호(문자열)</br>
+</details>
+
 
 
 ## 🎯 Trouble Shooting
@@ -136,7 +202,7 @@ def detail(num):
 
 <!-- 지훈님 꺼 -->
 <details>
-<summary>3. 카카오맵 API를 사용하는과정에서 카카오맵에 마커와, 맵이 표시되지않는 문</summary>
+<summary>3. 카카오맵 API를 사용하는과정에서, Geocoder 오류가 발생해서, 카카오맵에 마커와, 맵이 표시되지않는 문제</summary>
 
 ## 오류 상황
 카카오맵 API를 사용하는과정에서, Geocoder 오류가 발생해서, 카카오맵에 마커와, 맵이 표시되지않음.
@@ -176,23 +242,49 @@ appkey=APIKEY"&libraries=services></script>
 <summary>4. 카테고리버튼 클릭시, 페이지 로딩 후 해당 카테고리 버튼 active가 안되는 문제</summary>
 
 
-## 오류 상황
-접은 내용
+## 문제 상황
+카테고리 버튼을 클릭하면 카테고리 목록이 로딩된 후
 
-## 오류 메시지
-접은 내용
-  
-  ## 시도
+클릭한 카테고리 버튼에 active를 추가하여 색을 변화시키고자 하였으나
+
+변화시키고 바로 없어지는 문제가 발생하였다.
 ```python
-
+// 카테고리 버튼 클릭시 해당 카테고리 페이지 로딩
+$('.category > button').click(function() {
+		$('.category > button').removeClass('active'); // 전체 버튼 active 삭제
+		$(this).addClass('active'); // 클릭한 버튼에 active 추가
+    if (this.id == "전체") {
+        window.location.href = '/';
+    } else {
+        window.location.href = `/list/${this.id}`
+    }
+});
 ```
   
   ## 원인 파악
-접은 내용
+active에 대한 코드가 적용된 후 window.location.href를 통해 페이지가 로딩되어
+
+적용했던 부분은 사라지게 되는 것이었다..!
   
   ## 해결
+	페이지 로딩 후 경로에 있는 카테고리 정보를 가져와서 해결!!
 ```python
+$(document).ready(function(){
+    active_btn();
+});
 
+// 카테고리 버튼 active시키기
+function active_btn() {
+    let path = decodeURI($(location).attr('pathname'));
+    console.log(path);
+    $('.category > button').removeClass('active');
+    if (path == "/") {
+        $('#전체').addClass('active');
+    } else {// path = /list/<category>
+        let category = path.split("/list/")[1]
+        $(`#${category}`).addClass('active');
+    }
+}
 ```
   
 </details>
