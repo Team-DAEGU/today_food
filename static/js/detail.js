@@ -198,3 +198,19 @@ async function delete_post(num) {
         console.log(res.status)
     }
 }
+
+// 좋아요수 증가 시키기
+$('.like-btn').click(function(){
+    // 클릭한 좋아요의 col의 num을 가져와서
+    let num = $(this).parents('.card').attr('id');
+    console.log(num);
+
+    let formData = new FormData();
+    formData.append('num', num);
+
+    // api 호출
+    fetch('/update/like', { method: "POST", body: formData, }).then((response) => response.json()).then((data) => {
+        console.log(data["msg"]);
+        window.location.reload();
+    });
+});
