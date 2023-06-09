@@ -20,7 +20,7 @@
         <div class="btn-group">
             <button onclick="location.href ='/'" class="btn btn-outline-dark active" aria-current="page" id="1">뒤로</button>
             <button onclick="update_view({{data}});" class="btn btn-outline-dark" id="2">수정</button>
-            <button onclick="delete_post({{data['num']}});" class="btn btn-outline-dark" id="3">삭제</button>
+            <button onclick="delete_view({{data}});" class="btn btn-outline-dark" id="3">삭제</button>
         </div>
     </div>
     <div class="card post-part" id="{{ data['num']}}">

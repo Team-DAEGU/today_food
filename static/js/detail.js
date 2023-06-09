@@ -65,6 +65,7 @@ function update_view(data) {
                     </div><br>
                 </div>`
     $('.comment-part').append(temp_html);
+    $('.btn-group > #1').attr('onclick', `location.href ='/detail/${data['num']}'`);
     $('.btn-group > #2').text('완료');
     $('.btn-group > #2').attr('onclick', `update_post(${data['num']})`);
     $('.btn-group > #3').remove();
@@ -140,6 +141,56 @@ async function update_post(num){
     if (res.status == 200){
         alert(res_json['msg'])
         window.location.href = `/detail/${num}`
+    } else{
+        alert('잘못된 요청')
+        console.log(res.status)
+    }
+}
+
+function delete_view(data) {
+    alert('닉네임과 비밀번호를 입력해주세요!');
+    $('.comment-part').empty();
+    temp_html = `<div class="card-body">
+                    <div class="row w-100">
+                        <label class="col-3" for="nickname-input">닉네임</label>
+                        <input class="col" type="name" id="name" name="name">
+                    </div><br>
+
+                    <div class="row w-100">
+                        <label class="col-3" for="password-input">Password</label><br />
+                        <input class="col" type="password" id="password-input">
+                    </div><br>
+                </div>`
+    $('.comment-part').append(temp_html);
+    $('.btn-group > #3').attr('onclick', `delete_post(${data['num']})`);
+}
+
+async function delete_post(num) {
+    let name = $('#name').val()
+    if (name == "") {
+        alert("작성자의 닉네임을 입력해주세요!")
+        $('#name').focus()
+        return false;
+    }
+    let password = $('#password-input').val()
+    if (password == "") {
+        alert("이 게시글의 비밀번호를 입력해주세요!")
+        $('#password-input').focus()
+        return false;
+    }
+
+    let formData =  new FormData();
+    formData.append("name",name)
+    formData.append("password", password)
+    let res = await fetch(`/detail/${num}/delete`, {
+        method: "DELETE",
+        body: formData,
+    });
+    let res_json = await res.json() 
+    
+    if (res.status == 200){
+        alert(res_json['msg'])
+        window.location.href = `/`
     } else{
         alert('잘못된 요청')
         console.log(res.status)
