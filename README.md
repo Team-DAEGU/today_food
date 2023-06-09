@@ -49,7 +49,110 @@
 |상세 페이지 댓글작성|[COMMENT](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/detail/<int:num>/reply)|POST|- reply : 게시글의 댓글 (문자열)|테스트2|detail/delete|게시글의 num은 url 파라미터로 전달|
 
 
+## 🎯 Trouble Shooting
 
+<details>
+<summary>1. DB 컬렉션의 특정 필드 배열에 값이 추가되지 않고 수정되는 문제</summary>
+
+<!-- summary 아래 한칸 공백 두어야함 -->
+## 오류 상황
+접은 내용
+
+## 오류 메시지
+접은 내용
+  
+  ## 시도
+```python
+
+```
+  
+  ## 원인 파악
+접은 내용
+  
+  ## 해결
+```python
+
+```
+  
+</details>
+
+
+<details>
+<summary>1. DB 컬렉션의 특정 필드 배열에 값이 추가되지 않고 수정되는 문제</summary>
+
+<!-- summary 아래 한칸 공백 두어야함 -->
+## 오류 상황
+게시글의 상세페이지에서 댓글 작성 api를 구현하던 중 댓글 작성 시 해당 게시글의 댓글 배열에 값이 추가 되지 않고 변경되는 상황 발생
+
+## 오류 메시지
+코드는 작동했으나 기존 배열이 사라지고 새 배열에 하나의 값만 저장됨
+  
+  ## 시도
+```python
+
+```
+  
+  ## 원인 파악
+접은 내용
+  
+  ## 해결
+```python
+
+```
+  
+</details>
+
+
+<details>
+<summary>1. DB 컬렉션의 특정 필드 배열에 값이 추가되지 않고 수정되는 문제</summary>
+
+<!-- summary 아래 한칸 공백 두어야함 -->
+## 오류 상황
+접은 내용
+
+## 오류 메시지
+접은 내용
+  
+  ## 시도
+```python
+
+```
+  
+  ## 원인 파악
+접은 내용
+  
+  ## 해결
+```python
+
+```
+  
+</details>
+
+
+<details>
+<summary>1. DB 컬렉션의 특정 필드 배열에 값이 추가되지 않고 수정되는 문제</summary>
+
+<!-- summary 아래 한칸 공백 두어야함 -->
+## 오류 상황
+접은 내용
+
+## 오류 메시지
+접은 내용
+  
+  ## 시도
+```python
+
+```
+  
+  ## 원인 파악
+접은 내용
+  
+  ## 해결
+```python
+
+```
+  
+</details>
 
 
 
