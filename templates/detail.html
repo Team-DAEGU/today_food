@@ -10,7 +10,6 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/static/css/default.css" type="text/css">
-    <link rel="stylesheet" href="/static/css/index.css" type="text/css">
     <link rel="stylesheet" href="/static/css/detail.css" type="text/css">
 </head>
 
@@ -23,7 +22,7 @@
             <button onclick="delete_view({{data}});" class="btn btn-outline-dark" id="3">삭제</button>
         </div>
     </div>
-    <div class="card post-part" id="{{ data['num']}}">
+    <div class="card card-box post-part" id="{{ data['num']}}">
         <div class="row g-0">
             <div class="col-md-4 p-4">
                 <img src="{{ data['img_url'] }}" class="store-img img-fluid" alt="...">
@@ -60,9 +59,33 @@
         </div>
     </div>
     
-    <div class="card mt-4">
-        <div class="card-body comment-part p-4">
+    <div class="card card-box mt-4">
+        <div class="card-body reply-part p-4">
             <p class="info-title">댓글</p>
+            <div class="row justify-content-center pt-3">
+                <div class="col">
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="reply"></textarea>
+                        <label for="reply">댓글 남겨주세요 >3< </label>
+                    </div>
+                </div>
+                <button onclick="save_reply({{data['num']}})" type="button" class="btn btn-dark col-2 me-2">
+                    댓글 남기기
+                </button>
+            </div>
+            <div class="row justify-content-center pt-3 px-0" id="reply-list">
+                {% for reply in data['reply'] %}
+                <div class="row mt-2 px-0">
+                    <div class="card col mx-2">
+                        <div class="card-body">
+                            <blockquote class="blockquote mb-0">
+                                <p>{{ reply }}</p>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
     <script src="/static/js/detail.js"></script>

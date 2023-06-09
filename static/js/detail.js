@@ -52,7 +52,7 @@ function update_view(data) {
     // for (tag in data['tags']) {
     //     $('#tag').val(tag).prop("selected",true);
     // }
-    $('.comment-part').empty();
+    $('.reply-part').empty();
     temp_html = `<div class="card-body">
                     <div class="row w-100">
                         <label class="col-3" for="nickname-input">닉네임</label>
@@ -64,7 +64,7 @@ function update_view(data) {
                         <input class="col" type="password" id="password-input">
                     </div><br>
                 </div>`
-    $('.comment-part').append(temp_html);
+    $('.reply-part').append(temp_html);
     $('.btn-group > #1').attr('onclick', `location.href ='/detail/${data['num']}'`);
     $('.btn-group > #2').text('완료');
     $('.btn-group > #2').attr('onclick', `update_post(${data['num']})`);
@@ -149,7 +149,7 @@ async function update_post(num){
 
 function delete_view(data) {
     alert('닉네임과 비밀번호를 입력해주세요!');
-    $('.comment-part').empty();
+    $('.reply-part').empty();
     temp_html = `<div class="card-body">
                     <div class="row w-100">
                         <label class="col-3" for="nickname-input">닉네임</label>
@@ -161,7 +161,7 @@ function delete_view(data) {
                         <input class="col" type="password" id="password-input">
                     </div><br>
                 </div>`
-    $('.comment-part').append(temp_html);
+    $('.reply-part').append(temp_html);
     $('.btn-group > #1').attr('onclick', `location.href ='/detail/${data['num']}'`);
     $('.btn-group > #3').attr('onclick', `delete_post(${data['num']})`);
     $('.btn-group > #2').remove();
@@ -214,3 +214,20 @@ $('.like-btn').click(function(){
         window.location.reload();
     });
 });
+
+function save_reply(num) {
+    let reply = $('#reply').val()
+    if (reply == "") {
+        alert("댓글을 작성해주세요!")
+        $('#reply').focus()
+        return false;
+    }
+
+    let formData = new FormData();
+    formData.append("reply", reply);
+
+    fetch(`/detail/${num}/reply`, { method: "POST", body: formData, }).then((res) => res.json()).then((data) => {
+        alert(data["msg"]);
+        window.location.reload()
+    });
+}
