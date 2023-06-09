@@ -49,8 +49,8 @@
 
 ## Request
 <details>
-<summary>전체 맛집 리스트 가져오기</summary>
-	- restaurant_name:  맛집 이름 (문자열)</br>
+<summary>추천 맛집 글 작성회</summary>
+- restaurant_name:  맛집 이름 (문자열)</br>
 - address: 주소 (문자열)</br>
 - category: 가게 종류 (문자열)</br>
 - comment: 코멘트(리뷰) 내용 (문자열, optional)</br>
@@ -59,6 +59,59 @@
 - name : 게시글 작성자 닉네임(문자열)</br>
 - password : 게시글 비밀번호(문자열)</br>
 </details>
+
+<details>
+<summary>추천한 맛집 삭제</summary>
+- restaurant_name:  맛집 이름 (문자열, optional)</br>
+- address: 주소 (문자열, optional)</br>
+- category: 가게 종류 (문자열, optional)</br>
+- comment: 코멘트(리뷰) 내용 (문자열, optional)</br>
+- tags[] : 태그 리스트(배열, optional )</br>
+- url : 이미지 URL (optional)</br>
+- name : 게시글 작성자(문자열)</br>
+- password : 게시글 비밀번호(문자열)</br>
+</details>
+
+## resonse
+<details>
+<summary>전체 맛집 리스트 조회</summary>
+- num : 게시글 번호(숫자형)</br>
+- title: 맛집 이름 (문자열)</br>
+- address: 주소 (문자열)</br>
+- category: 가게 종류 (문자열)</br>
+- comment: 코멘트(리뷰) 내용 (문자열, optional)</br>
+- tags[] : 태그 리스트(배열, optional )</br>
+- img_url : 이미지 URL</br>
+- like : 좋아요 개수(숫자형)</br>
+- reply[]: 게시글의 댓글(배열, optional)</br>
+- name : 게시글 작성자(문자열)</br>
+- password : 게시글 비밀번호(문자열)</br>
+</details>
+
+<details>
+<summary>전체 맛집 리스트 가져오기(선택한 카테고리의 맛집)</summary>
+- restaurant_name:  맛집 이름 (문자열)</br>
+- address: 주소 (문자열)</br>
+- category: 가게 종류 (문자열)</br>
+- comment: 코멘트(리뷰) 내용 (문자열, optional)</br>
+- tags[] : 태그 리스트(배열, optional )</br>
+- url : 이미지 URL</br>
+- name : 게시글 작성자 닉네임(문자열)</br>
+- password : 게시글 비밀번호(문자열)</br>
+</details>
+
+<details>
+<summary>추천 맛집의 상세 페이지 조회</summary>
+- restaurant_name:  맛집 이름 (문자열)</br>
+- address: 주소 (문자열)</br>
+- category: 가게 종류 (문자열)</br>
+- comment: 코멘트(리뷰) 내용 (문자열, optional)</br>
+- tags[] : 태그 리스트(배열, optional )</br>
+- url : 이미지 URL</br>
+- name : 게시글 작성자 닉네임(문자열)</br>
+- password : 게시글 비밀번호(문자열)</br>
+</details>
+
 
 
 ## 🎯 Trouble Shooting
