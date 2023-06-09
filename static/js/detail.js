@@ -115,6 +115,7 @@ async function update_post(num){
         $('#name').focus()
         return false;
     }
+    
     let password = $('#password-input').val()
     if (password == "") {
         alert("이 게시글의 비밀번호를 입력해주세요!")
@@ -163,8 +164,8 @@ function delete_view(data) {
                 </div>`
     $('.reply-part').append(temp_html);
     $('.btn-group > #1').attr('onclick', `location.href ='/detail/${data['num']}'`);
-    $('.btn-group > #3').attr('onclick', `delete_post(${data['num']})`);
     $('.btn-group > #2').remove();
+    $('.btn-group > #3').attr('onclick', `delete_post(${data['num']})`);
 }
 
 async function delete_post(num) {
@@ -182,7 +183,7 @@ async function delete_post(num) {
     }
 
     let formData =  new FormData();
-    formData.append("name",name)
+    formData.append("name", name)
     formData.append("password", password)
     let res = await fetch(`/detail/${num}/delete`, {
         method: "DELETE",
