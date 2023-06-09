@@ -132,7 +132,7 @@ def delete_post(num):
 def detail_reply(num):
     get_reply = request.form['reply']
     db.data.update_one({'num':num}, {'$push': {'reply':get_reply}})
-    return jsonify({'msg':'작성 완료'})
+    return jsonify({'msg':'댓글 작성 완료!'})
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5001, debug=True)
