@@ -202,7 +202,7 @@ def detail(num):
 
 <!-- 지훈님 꺼 -->
 <details>
-<summary>3. 카카오맵 API를 사용하는과정에서 카카오맵에 마커와, 맵이 표시되지않는 문</summary>
+<summary>3. 카카오맵 API를 사용하는과정에서, Geocoder 오류가 발생해서, 카카오맵에 마커와, 맵이 표시되지않는 문제</summary>
 
 ## 오류 상황
 카카오맵 API를 사용하는과정에서, Geocoder 오류가 발생해서, 카카오맵에 마커와, 맵이 표시되지않음.
