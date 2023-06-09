@@ -33,8 +33,7 @@
 - 추천 맛집 상세 정보 : 맛집의 상세한 정보(추천 내용, 주소, 연락처 등)를 확인할 수 있습니다.  
 
 ## 🖼 와이어 프레임
-![그림1](https://github.com/thing-zoo/algorithm-study/assets/62596783/1d6057a0-9b7a-4009-b22b-9f6f09bac63b)
-
+![그림1](https://github.com/Team-DAEGU/today_food/assets/62596783/1315dfa2-68e9-48e5-82c6-1a5b561a2549)
 
 ## 🕹 API
 |기능|URL|Method|Request|Resonse|Branch_Name|비고|
