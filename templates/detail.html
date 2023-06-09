@@ -18,19 +18,19 @@
     <div class="page-top">
         <h1 class="page-title">상세 정보확인</h1>
         <div class="btn-group">
-            <a href="javascript:window.history.back();" class="btn btn-outline-dark active" aria-current="page">뒤로</a>
-            <a href="#" class="btn btn-outline-dark">수정</a>
-            <a href="#" class="btn btn-outline-dark">삭제</a>
+            <button onclick="location.href ='/'" class="btn btn-outline-dark active" aria-current="page" id="1">뒤로</button>
+            <button onclick="update_view({{data}});" class="btn btn-outline-dark" id="2">수정</button>
+            <button onclick="delete_post({{data['num']}});" class="btn btn-outline-dark" id="3">삭제</button>
         </div>
     </div>
-    <div class="card">
+    <div class="card post-part" id="{{ data['num']}}">
         <div class="row g-0">
-            <div class="col-md-4">
+            <div class="col-md-4 p-4">
                 <img src="{{ data['img_url'] }}" class="store-img img-fluid" alt="...">
             </div>
             <div class="col-md-8">
                 <div class="card-body h-100 p-4">
-                    <div class="row">
+                    <div>
                         <div class="title-category">
                             <span class="info-title me-4">{{ data['title'] }}</span>
                             <span class="info-category">{{ data['category'] }}</span>
@@ -39,7 +39,7 @@
                         <p class="info-comment">{{ data['comment'] }}</p>
                     </div>
                     <div class="tag-like">
-                        <div class="tag-list">
+                        <div class="">
                             {% for tag in data['tags'] %}
                             <span class="tag">{{ tag }}</span>
                             {% endfor %}
@@ -53,18 +53,19 @@
                                 {% endif %}
                             </a>
                             {{ data['like'] }}
-                        </div>                
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="card mt-4">
+    
+    <div class="card comment-part mt-4">
         <div class="card-body">
             <p class="info-title">댓글</p>
         </div>
     </div>
+    <script src="/static/js/detail.js"></script>
 </body>
 
 </html>
