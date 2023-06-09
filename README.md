@@ -50,7 +50,7 @@
 
 
 ## 🎯 Trouble Shooting
-
+<!-- 규현님 꺼 -->
 <details>
 <summary>1. DB 컬렉션의 특정 필드 배열에 값이 추가되지 않고 수정되는 문제</summary>
 
@@ -95,11 +95,10 @@ def detail_reply(num):
 처음에 find_one으로 해당 쿼리를 찾을 필요도 없다(update_one 하면서 num 값으로 찾기 때문!)
 </details>
 
-
+<!-- 성목님 꺼 -->
 <details>
 <summary>2.DB컬렉션에서 하나만 가져오기가 안되는 문제</summary>
 
-<!-- summary 아래 한칸 공백 두어야함 -->
 ## 오류 상황
 MongoDB에서 받아오는 데이터를 동시에 여러가지 가져올 경우 작동하지만 한 가지 일 경우 가져오지 못하는 문제
 
@@ -136,38 +135,48 @@ def detail(num):
   for문을 제거하고 collection.find()를 collection.find_one()으로 바꿔 사용 후 조건({'num' : 1})을 추가하니 잘 작동하였다
 </details>
 
-
+<!-- 지훈님 꺼 -->
 <details>
-<summary>1. DB 컬렉션의 특정 필드 배열에 값이 추가되지 않고 수정되는 문제</summary>
+<summary>3. 카카오맵 API를 사용하는과정에서 카카오맵에 마커와, 맵이 표시되지않는 문</summary>
 
-<!-- summary 아래 한칸 공백 두어야함 -->
 ## 오류 상황
 카카오맵 API를 사용하는과정에서, Geocoder 오류가 발생해서, 카카오맵에 마커와, 맵이 표시되지않음.
 
 ## 오류 메시지
-접은 내용
+	Uncaught TypeError: Cannot read properties of undefined (reading 'Geocoder')
+	at posts.js:32:40
   
   ## 시도
 ```python
-
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?
+appkey=APIKEY"&libraries=services></script>
 ```
-  
+1. 카카오맵 홈페이지에서 자바스크립트에서 적용되는 API키 인지 다시 한번확인 (X)
+2. 쿠키 세션 초기화 (다른사람 블로그 참조 X)
+3. 카카오맵 API를 제공하는 사이트에서 공식문서를 다시 읽어서, service라이브러리를 포함하지않은걸 
+파악하고, 소스 코드 수정
+<head> 태그 바로아래 키 삽입하니 해결 
+	
   ## 원인 파악
-접은 내용
+카카오맵에서 Service 라이브러리를 제공하는지 알지 못함 (공식문서체크 X)
+코드를 haed태그 바로 아래에 붙여넣으니 해결.
   
   ## 해결
 ```python
 
 ```
-  
+  <head> 태그 바로아래 키 삽입하니 해결
+## 느낀점
+  코드를 그냥 붙여넣지말고, 해당 사이트 명세사항을 꼼꼼히 살펴보자..
+
 </details>
 
 
-
+<!-- 명주님 꺼 -->
 <details>
-<summary>1. DB 컬렉션의 특정 필드 배열에 값이 추가되지 않고 수정되는 문제</summary>
+<summary>4. 카테고리버튼 클릭시, 페이지 로딩 후 해당 카테고리 버튼 active가 안되는 문제</summary>
 
-<!-- summary 아래 한칸 공백 두어야함 -->
+
 ## 오류 상황
 접은 내용
 
