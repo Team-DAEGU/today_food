@@ -1,5 +1,5 @@
-# Today_Food
-미니 프로젝트 오늘 뭐먹지? Repository 입니다.
+# 대구 오늘 뭐먹지?
+대구의 맛집을 추천 및 공유하는 서비스
 
 [Git_Hub]([https://google.com](https://github.com/Team-DAEGU/today_food))
 
