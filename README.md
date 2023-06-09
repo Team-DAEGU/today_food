@@ -13,19 +13,19 @@
 ## 👨‍👩‍👦‍👦 팀원 소개
 **팀장 : 김규현**
 
-- 담당 기능 :  게시글 작성, 상세 페이지에서 뒤로가기(메인으로) 버튼 필요 게시글 상세 페이지에서 댓글 기능 구현하기(프론트/백) 
+- 담당 기능 :  게시글 작성,  게시글 상세 페이지에서 댓글 기능 구현하기, 댓글 작성 버튼 클릭 시 입력창 띄우는 CSS 및 백엔드 API 호출, DB 만들어서 ID, PW 포함하여 데이터 추가 
 
 **팀원 : 김지훈**
 
-- 담당 기능 : 주소값 API 구현 게시글작성
+- 담당 기능 : 주소값 API 구현, 게시글작성 페이지 작성, 뒤로가기 버튼
 
 **팀원 : 이성목**
 
-- 담당 기능 : 상세 페이지 작서 게시글 상세 페이지에서 tags 데이터 붙여넣기 + likes도 가능하다면 같이!
+- 담당 기능 : 상세 페이지 작성, 게시글 상세 페이지에서 tags 데이터+likes추가, 상세 페이지에서 뒤로가기 버튼
 
 **팀원 : 정명주**
 
-- 담당 기능 : 디자인, 데이터수집, 카테고리별 맛집 목록 UI 및 GET API, 배포
+- 담당 기능 : 디자인, 데이터수집, 카테고리별 맛집 목록 UI 및 GET API, 배포, 수정/삭제 버튼 클릭 시 서버 api 호출 , 메인 페이지 tags 데이터+likes추가
 
 ## ⚙ 주요 기능
 - 메인 페이지 : 대구 오늘 뭐먹지? 서비스의 소개와 카테고리 별 맛집의 목록을 한 눈에 볼 수 있습니다.  
@@ -42,11 +42,11 @@
 |전체 맛집 리스트 가져오기|[ALL LIST](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/)|GET|테스트1|테스트2|index||
 |카테고리별 맛집 리스트 가져오기|[LIST](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/list/<category>)|GET|테스트1|테스트2|feat/index-cardview||
 |게시글 작성(맛집 추천하기)|[POST](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/api/posts)|POST|테스트1|테스트2|posts||
-|게시글 상세(추천 맛집 상세 페이지)|[DETAIL](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/detail/<int:num>)|GET|테스트1|테스트2|detail||
+|게시글 상세(추천 맛집 상세 페이지)|[DETAIL](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/detail/<int:num>)|GET|테스트1|테스트2|detail|게시글의 num은 url 파라미터로 전달|
 |좋아요수 증가시키기|[LIKE](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/update/like)|POST|테스트1|테스트2|feat/like||
-|추천 맛집 포스팅 삭제|[DELETE](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/detail/<int:num>/delete)|PUT|테스트1|테스트2|detail/update||
-|추천 맛집 포스팅 수정|[REVISE](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/detail/<int:num>/update)|DELETE|테스트1|테스트2|detail/delete||
-|상세 페이지 댓글작성|[COMMENT](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/detail/<int:num>/reply)|POST|- reply : 게시글의 댓글 (문자열)|테스트2|detail/delete||
+|추천 맛집 포스팅 삭제|[DELETE](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/detail/<int:num>/delete)|PUT|테스트1|테스트2|detail/update|게시글의 num은 url 파라미터로 전달|
+|추천 맛집 포스팅 수정|[REVISE](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/detail/<int:num>/update)|DELETE|테스트1|테스트2|detail/delete|게시글의 num은 url 파라미터로 전달|
+|상세 페이지 댓글작성|[COMMENT](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/detail/<int:num>/reply)|POST|- reply : 게시글의 댓글 (문자열)|테스트2|detail/delete|게시글의 num은 url 파라미터로 전달|
 
 
 
