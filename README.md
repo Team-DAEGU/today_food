@@ -33,7 +33,7 @@
 - 추천 맛집 상세 정보 : 맛집의 상세한 정보(추천 내용, 주소, 연락처 등)를 확인할 수 있습니다.  
 
 ## 🖼 와이어 프레임
-[page](https://www.figma.com/file/FmvTyaiZ6CvZtQCifPIMx6/%EC%99%80%EC%9D%B4%EC%96%B4-%ED%94%84%EB%A0%88%EC%9E%84?type=design&node-id=0-1&t=J3Y7t6S0tId5458R-0)
+![그림1](https://github.com/thing-zoo/algorithm-study/assets/62596783/1d6057a0-9b7a-4009-b22b-9f6f09bac63b)
 
 
 ## 🕹 API
