@@ -81,3 +81,9 @@
 label {
     font-weight: bold;
 }
+
+.btn {
+    padding: 6px 13px 6px 13px;
+    margin-left: 20px;
+    border-radius: 20px;
+}
