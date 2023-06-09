@@ -109,15 +109,31 @@ async function update_post(num){
         $('#url').focus()
         return false;
     }
+
+    let res = await fetch(`/${num}`);
+    let res_json = await res.json(); 
+    res = res_json['result'];
+    let check_name = res['name'];
+    let check_password = res['password'];
+
     let name =$('#name').val()
     if (name == "") {
         alert("작성자의 닉네임을 입력해주세요!")
         $('#name').focus()
         return false;
+    } else if (name != check_name ) {
+        alert("작성자의 닉네임이 틀렸습니다!")
+        $('#name').focus()
+        return false;
     }
+    
     let password = $('#password-input').val()
     if (password == "") {
         alert("이 게시글의 비밀번호를 입력해주세요!")
+        $('#password-input').focus()
+        return false;
+    } else if (password != check_password ) {
+        alert("작성자의 비밀번호가 틀렸습니다!")
         $('#password-input').focus()
         return false;
     }
@@ -132,11 +148,11 @@ async function update_post(num){
     formData.append("name",name)
     formData.append("password", password)
 
-    let res = await fetch(`/detail/${num}/update`, {
+    res = await fetch(`/detail/${num}/update`, {
         method: "PUT",
         body: formData,
     });
-    let res_json = await res.json() 
+    res_json = await res.json();
     
     if (res.status == 200){
         alert(res_json['msg'])
@@ -163,32 +179,47 @@ function delete_view(data) {
                 </div>`
     $('.reply-part').append(temp_html);
     $('.btn-group > #1').attr('onclick', `location.href ='/detail/${data['num']}'`);
-    $('.btn-group > #3').attr('onclick', `delete_post(${data['num']})`);
     $('.btn-group > #2').remove();
+    $('.btn-group > #3').attr('onclick', `delete_post(${data['num']})`);
 }
 
 async function delete_post(num) {
-    let name = $('#name').val()
+    let res = await fetch(`/${num}`);
+    let res_json = await res.json(); 
+    res = res_json['result'];
+    let check_name = res['name'];
+    let check_password = res['password'];
+
+    let name =$('#name').val()
     if (name == "") {
         alert("작성자의 닉네임을 입력해주세요!")
         $('#name').focus()
         return false;
+    } else if (name != check_name ) {
+        alert("작성자의 닉네임이 틀렸습니다!")
+        $('#name').focus()
+        return false;
     }
+    
     let password = $('#password-input').val()
     if (password == "") {
         alert("이 게시글의 비밀번호를 입력해주세요!")
         $('#password-input').focus()
         return false;
+    } else if (password != check_password ) {
+        alert("작성자의 비밀번호가 틀렸습니다!")
+        $('#password-input').focus()
+        return false;
     }
 
     let formData =  new FormData();
-    formData.append("name",name)
+    formData.append("name", name)
     formData.append("password", password)
-    let res = await fetch(`/detail/${num}/delete`, {
+    res = await fetch(`/detail/${num}/delete`, {
         method: "DELETE",
         body: formData,
     });
-    let res_json = await res.json() 
+    res_json = await res.json() 
     
     if (res.status == 200){
         alert(res_json['msg'])

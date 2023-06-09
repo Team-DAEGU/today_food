@@ -134,5 +134,12 @@ def detail_reply(num):
     db.data.update_one({'num':num}, {'$push': {'reply':get_reply}})
     return jsonify({'msg':'댓글 작성 완료!'})
 
+# 닉네임 비밀번호 조회
+@app.route('/<int:num>')
+def check(num):
+    document = db.data.find_one({'num' : num}, {'_id': False})
+    return jsonify({'result': document})
+
+
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5001, debug=True)
