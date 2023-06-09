@@ -162,7 +162,9 @@ function delete_view(data) {
                     </div><br>
                 </div>`
     $('.comment-part').append(temp_html);
+    $('.btn-group > #1').attr('onclick', `location.href ='/detail/${data['num']}'`);
     $('.btn-group > #3').attr('onclick', `delete_post(${data['num']})`);
+    $('.btn-group > #2').remove();
 }
 
 async function delete_post(num) {
