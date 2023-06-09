@@ -1,4 +1,4 @@
-# 대구 오늘 뭐먹지?
+# 🍳대구 오늘 뭐먹지?
 대구의 맛집을 추천 및 공유하는 서비스
 
 [Git_Hub]([https://google.com](https://github.com/Team-DAEGU/today_food))
@@ -47,7 +47,7 @@
 |추천 맛집 포스팅 수정|[REVISE](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/detail/<int:num>/update)|DELETE|- name : 게시글 작성자(문자열)</br>- password : 게시글 비밀번호(문자열)|{“msg”  : “삭제 완료!”}|게시글의 num은 url 파라미터로 전달|
 |상세 페이지 댓글작성|[COMMENT](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/detail/<int:num>/reply)|POST|- reply : 게시글의 댓글 (문자열)|{“msg”  : “작 완료!”}|게시글의 num은 url 파라미터로 전달|
 
-## Request
+## 🪄Request
 <details>
 <summary>추천 맛집 글 작성</summary>
 - restaurant_name:  맛집 이름 (문자열)</br>
@@ -72,7 +72,7 @@
 - password : 게시글 비밀번호(문자열)</br>
 </details>
 
-## resonse
+## 🪄resonse
 <details>
 <summary>전체 맛집 리스트 조회</summary>
 - num : 게시글 번호(숫자형)</br>
