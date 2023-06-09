@@ -37,12 +37,23 @@
 
 
 ## 🕹 API
-|기능|URL|Method|Request|Resonse|Branch_Name|
-|------|---|---|------|---|---|
-|전체 맛집 리스트 가져오기|/|GET|테스트1|테스트2|index|
-|카테고리별 맛집 리스트 가져오기|/list/<category>|GET|테스트1|테스트2|feat/index-cardview|
-|맛집 추천하기 (게시글 작성)|/api/posts|POST|테스트1|테스트2|posts|
-|추천 맛집 상세 페이지 (게시글 상세)|/detail|GET|테스트1|테스트2|detail|
-|좋아요수 증가시키기|/update/like|POST|테스트1|테스트2|feat/like|
-|추천 맛집 삭제|/detail/int:num/delete|PUT|테스트1|테스트2|detail/update|
-|추천 맛집 수정|/detail/int:num/update|DELETE|테스트1|테스트2|detail/delete|
+|기능|URL|Method|Request|Resonse|Branch_Name|비고|
+|------|---|---|------|---|---| -------|
+|전체 맛집 리스트 가져오기|[ALL LIST](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/)|GET|테스트1|테스트2|index||
+|카테고리별 맛집 리스트 가져오기|[LIST](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/list/<category>)|GET|테스트1|테스트2|feat/index-cardview||
+|게시글 작성(맛집 추천하기)|[POST](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/api/posts)|POST|테스트1|테스트2|posts||
+|게시글 상세(추천 맛집 상세 페이지)|[DETAIL](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/detail/<int:num>)|GET|테스트1|테스트2|detail||
+|좋아요수 증가시키기|[LIKE](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/update/like)|POST|테스트1|테스트2|feat/like||
+|추천 맛집 포스팅 삭제|[DELETE](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/detail/<int:num>/delete)|PUT|테스트1|테스트2|detail/update||
+|추천 맛집 포스팅 수정|[REVISE](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/detail/<int:num>/update)|DELETE|테스트1|테스트2|detail/delete||
+|상세 페이지 댓글작성|[COMMENT](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/detail/<int:num>/reply)|POST|- reply : 게시글의 댓글 (문자열)|테스트2|detail/delete||
+
+
+
+
+
+
+
+
+
+
