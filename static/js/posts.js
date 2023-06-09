@@ -5,8 +5,6 @@ function goBack() {
 }
 
 async function save_post(){
-
-
     let restaurant_name = $('#restaurant-name').val()
     if (restaurant_name == "") {
         alert("상호명을 입력해주세요!")
@@ -19,7 +17,7 @@ async function save_post(){
         $('#address').focus()
         return false;
     }
-    let foddie = $('#foddie').val()
+    let foddie = $('#foodie').val()
     if (foddie == "") {
         alert("음식의 종류를 선택해주세요!!")
         $('#foddie').focus()

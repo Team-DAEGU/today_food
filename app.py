@@ -31,7 +31,7 @@ def update_like():
 # 게시글 상세페이지 조회
 @app.route('/detail/<int:num>')
 def detail(num):
-    document = db.data.find_one({'num' : num})
+    document = db.data.find_one({'num' : num}, {'_id': False})
     return render_template('detail.html', data=document)
 
 # 게시글 작성 페이지 랜더링
@@ -64,13 +64,75 @@ def register_post():
         'category': category,
         'comment': comment,
         'tags': tags,
-        'image_url':  img_url,
+        'img_url':  img_url,
         'name':name,
         'password':password,
         'like': 0
     }
     db.data.insert_one(post_data)
     return jsonify({'msg':'등록이 완료되었습니다.'})
+
+# 게시글 수정
+@app.route('/detail/<int:num>/update', methods = ['PUT'])
+def update_post(num):
+    if request.method != 'PUT':
+        return jsonify({'msg': '잘못된 요청 메소드입니다!'}, 405)
+    
+    # num으로 찾은 기존 컬렉션
+    current_post = db.data.find_one({'num':num},{'_id':False})
+    
+    # 본인 인증을 위해 입력받은 필드값
+    name = request.form['name']
+    password = request.form['password']
+    
+    # 프론트에서 수정을 위해 입력 받은 값
+    restaurant_name = request.form['restaurant_name']
+    address = request.form['address']
+    category = request.form['categories']
+    comment = request.form['comment']
+    tags = []
+    tag = request.form['tag'].split(",")
+    for i in tag:
+        tags.append(i)
+    img_url=request.form['url']
+
+    if current_post['name'] == name and current_post['password'] == password:
+        # 전달받은 num으로 컬렉션을 찾아 값 수정 및 저장
+        current_post['title'] = restaurant_name
+        current_post['address'] = address
+        current_post['category'] = category
+        current_post['comment'] = comment
+        current_post['tags'] = tags
+        current_post['img_url'] = img_url
+        db.data.replace_one({'num': num}, current_post)
+    elif current_post['name'] != name or current_post['password'] != password:
+        return jsonify({'msg':'입력하신 닉네임과, 비밀번호가 일치하지 않습니다!'}, 403)
+    return jsonify({'msg': '수정 완료!'})
+
+# 게시글 삭제
+@app.route('/detail/<int:num>/delete', methods = ['DELETE'])
+def delete_post(num):
+    if request.method != 'DELETE':
+        return jsonify({'msg': '잘못된 요청 메소드입니다!'}, 405)
+    
+    target_post = db.data.find_one({'num':num},{'_id':False})
+
+    # 본인 인증을 위해 입력받은 필드값
+    name = request.form['name']
+    password = request.form['password']
+
+    if target_post['name'] == name and target_post['password'] == password:
+        db.data.delete_one({'num':num})
+    else:
+        return jsonify({'msg':'입력하신 닉네임과, 비밀번호가 일치하지 않습니다!'}, 403)
+    return jsonify({'msg':'삭제 완료!'})
+
+# 게시글 상세페이지에서 댓글 작성
+@app.route('/detail/<int:num>/reply', methods = ['POST'])
+def detail_reply(num):
+    get_reply = request.form['reply']
+    db.data.update_one({'num':num}, {'$push': {'reply':get_reply}})
+    return jsonify({'msg':'작성 완료'})
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5001, debug=True)
