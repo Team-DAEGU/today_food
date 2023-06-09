@@ -50,7 +50,14 @@
 ## Request
 <details>
 <summary>전체 맛집 리스트 가져오기</summary>
-	
+	- restaurant_name:  맛집 이름 (문자열)</br>
+- address: 주소 (문자열)</br>
+- category: 가게 종류 (문자열)</br>
+- comment: 코멘트(리뷰) 내용 (문자열, optional)</br>
+- tags[] : 태그 리스트(배열, optional )</br>
+- url : 이미지 URL</br>
+- name : 게시글 작성자 닉네임(문자열)</br>
+- password : 게시글 비밀번호(문자열)</br>
 </details>
 
 
