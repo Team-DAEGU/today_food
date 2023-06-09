@@ -19,6 +19,13 @@
     font-weight: bold;
   }
 
+  .info-window #addressClick {
+    font-size: 0.9em;
+    color: black;
+    cursor: pointer;
+  }
+  
+
 .page-title {
     font-weight: 700;
 }
