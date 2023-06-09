@@ -54,7 +54,7 @@ def register_post():
     name=request.form['name']
     password=request.form['password']
 
-    posts_list = list(db.data.find({}, {'_id': False}))
+    posts_list = list(db.test.find({}, {'_id': False}))
     num = len(posts_list) + 1
 
     post_data = {
@@ -69,7 +69,7 @@ def register_post():
         'password':password,
         'like': 0
     }
-    db.data.insert_one(post_data)
+    db.test.insert_one(post_data)
     return jsonify({'msg':'등록이 완료되었습니다.'})
 
 # 게시글 수정
@@ -126,6 +126,13 @@ def delete_post(num):
     else:
         return jsonify({'msg':'입력하신 닉네임과, 비밀번호가 일치하지 않습니다!'}, 403)
     return jsonify({'msg':'삭제 완료!'})
+
+# 게시글 상세페이지에서 댓글 작성
+@app.route('/detail/<int:num>/reply', methods = ['POST'])
+def detail_reply(num):
+    get_reply = request.form['reply']
+    db.test.update_one({'num':num}, {'$push': {'reply':get_reply}})
+    return jsonify({'msg':'작성 완료'})
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5001, debug=True)
