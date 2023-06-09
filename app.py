@@ -31,7 +31,7 @@ def update_like():
 # 게시글 상세페이지 조회
 @app.route('/detail/<int:num>')
 def detail(num):
-    document = db.data.find_one({'num' : num})
+    document = db.data.find_one({'num' : num}, {'_id': False})
     return render_template('detail.html', data=document)
 
 # 게시글 작성 페이지 랜더링

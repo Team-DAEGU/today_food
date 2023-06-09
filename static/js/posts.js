@@ -17,7 +17,7 @@ async function save_post(){
         $('#address').focus()
         return false;
     }
-    let foddie = $('#foddie').val()
+    let foddie = $('#foodie').val()
     if (foddie == "") {
         alert("음식의 종류를 선택해주세요!!")
         $('#foddie').focus()
