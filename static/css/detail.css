@@ -5,6 +5,20 @@
     margin: 5% 10% 20px 10%;
 }
 
+.info-window {
+    width: 150px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10%;
+ 
+
+  }
+  .info-window h3 {
+    font-size: 1.2em;
+    color: black;
+    font-weight: bold;
+  }
+
 .page-title {
     font-weight: 700;
 }
