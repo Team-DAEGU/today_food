@@ -3,7 +3,7 @@
 
 [Git_Hub]([https://google.com](https://github.com/Team-DAEGU/today_food))
 
-[배포_링크](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/)
+[Project_Link](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/)
 
 ## 🎈팀소개
 안녕하세요! 이노베이션 캠프에서 백엔드 개발자가 되기 위해 모인 **Team. 대구 맛잘알**입니다.  
