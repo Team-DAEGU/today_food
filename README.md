@@ -50,33 +50,7 @@
 
 
 ## 🎯 Trouble Shooting
-
-<details>
-<summary>1. DB 컬렉션의 특정 필드 배열에 값이 추가되지 않고 수정되는 문제</summary>
-
-<!-- summary 아래 한칸 공백 두어야함 -->
-## 오류 상황
-접은 내용
-
-## 오류 메시지
-접은 내용
-  
-  ## 시도
-```python
-
-```
-  
-  ## 원인 파악
-접은 내용
-  
-  ## 해결
-```python
-
-```
-  
-</details>
-
-
+<!-- 규현님 꺼 -->
 <details>
 <summary>1. DB 컬렉션의 특정 필드 배열에 값이 추가되지 않고 수정되는 문제</summary>
 
@@ -89,24 +63,120 @@
   
   ## 시도
 ```python
+@app.route('/detail/<int:num>/reply', methods = ['POST'])
+def detail_reply(num):
+    target_post = db.data.find_one({'num':num}, {'_id':False})
+    get_reply = request.form['reply']
+		
+		# num 값으로 찾은 쿼리에 reply 배열을 가져오고, reply가 없는 경우 빈 배열 가져옴
+    reply = target_post.get('reply', [])
+    reply.append(get_reply) # 배열에 사용자가 입력한 값 추가
+		
+		# reply 필드에 새 배열로 수정
+    db.test.update_one({'num':num}, {'$set': {'reply':reply}})
+    return jsonify({'msg':'작성 완료'})
+```
+  
+  댓글은 추가할 때 마다 배열에 담겨야하고, 기존 게시글에 배열이 있을지 없을지 알 수 없다고 판단하여 num으로 조회한 쿼리에서 reply 필드를 가져오고 없다면 빈 배열을 가져오도록 코드 작성. 그리고 reply 필드에서 가져온 배열에 사용자로부터 입력받은 값을 append 함수를 사용하여 넣고, 기존 게시글에서 reply 필드를 수정한 reply 필드로 업데이트 했더니 수정할 때 마다 reply 배열에 값이 추가되지 않고 기존 값(0번째 index)이 계속 수정되었음
+  ## 원인 파악
+reply 필드에 $set 연산자로 새로운 reply 배열로 수정했기 때문에 계속해서 값이 추가되지 않고, 값이 변경되었다.
+  
+  ## 해결
+```python
+@app.route('/detail/<int:num>/reply', methods = ['POST'])
+def detail_reply(num):
+    get_reply = request.form['reply']
+    db.test.update_one({'num':num}, {'$push': {'reply':get_reply}})
+    return jsonify({'msg':'작성 완료'})
+```
+  배열을 만들어야 된다는 생각 자체가 잘못되었었다.
+그냥 reply 필드에 $push 연산자를 사용하여 사용자로부터 입력받은 값을 넣으면 자동으로 배열이 되어버린다.
+만약 해당 쿼리의 reply 필드에 값이 없을 경우 값이 추가되고, 값이 있는 경우에도 배열의 끝에 추가된다.
+처음에 find_one으로 해당 쿼리를 찾을 필요도 없다(update_one 하면서 num 값으로 찾기 때문!)
+</details>
 
+<!-- 성목님 꺼 -->
+<details>
+<summary>2.DB컬렉션에서 하나만 가져오기가 안되는 문제</summary>
+
+## 오류 상황
+MongoDB에서 받아오는 데이터를 동시에 여러가지 가져올 경우 작동하지만 한 가지 일 경우 가져오지 못하는 문제
+
+## 오류 메시지
+코드 동작은 정상적으로 하여 메세지는 나오지 않았다
+  
+  ## 시도
+```python
+@app.route('/detail/<int:num>')
+def detail():
+    posts = collection.find()  # MongoDB에서 정보 가져오기
+    data_list = []
+    for post in posts:
+        data = {
+            'image_url': post.get('image_url', ''),
+            'address': post.get('address', ''),
+            'title': post.get('title', '')
+        }
+        data_list.append(data)
+    
+    return render_template('index.html', data_list=data_list)
 ```
   
   ## 원인 파악
-접은 내용
+for문은 데이터 확인을 위해 사용할 때는 좋았지만 하나만 정보를 가져올 때는 find_one을 하더라도 for문이면 정상적으로 돌아가지 않았다, 또한, 조건이 빠져있다.
+  
+  ## 해결
+```python
+@app.route('/detail/<int:num>')
+def detail(num):
+    document = db.data.find_one({'num' : num})
+    return render_template('detail.html', data=document)
+```
+  for문을 제거하고 collection.find()를 collection.find_one()으로 바꿔 사용 후 조건({'num' : 1})을 추가하니 잘 작동하였다
+</details>
+
+<!-- 지훈님 꺼 -->
+<details>
+<summary>3. 카카오맵 API를 사용하는과정에서 카카오맵에 마커와, 맵이 표시되지않는 문</summary>
+
+## 오류 상황
+카카오맵 API를 사용하는과정에서, Geocoder 오류가 발생해서, 카카오맵에 마커와, 맵이 표시되지않음.
+
+## 오류 메시지
+	Uncaught TypeError: Cannot read properties of undefined (reading 'Geocoder')
+	at posts.js:32:40
+  
+  ## 시도
+```python
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?
+appkey=APIKEY"&libraries=services></script>
+```
+1. 카카오맵 홈페이지에서 자바스크립트에서 적용되는 API키 인지 다시 한번확인 (X)
+2. 쿠키 세션 초기화 (다른사람 블로그 참조 X)
+3. 카카오맵 API를 제공하는 사이트에서 공식문서를 다시 읽어서, service라이브러리를 포함하지않은걸 
+파악하고, 소스 코드 수정
+<head> 태그 바로아래 키 삽입하니 해결 
+	
+  ## 원인 파악
+카카오맵에서 Service 라이브러리를 제공하는지 알지 못함 (공식문서체크 X)
+코드를 haed태그 바로 아래에 붙여넣으니 해결.
   
   ## 해결
 ```python
 
 ```
-  
+  <head> 태그 바로아래 키 삽입하니 해결
+## 느낀점
+  코드를 그냥 붙여넣지말고, 해당 사이트 명세사항을 꼼꼼히 살펴보자..
+
 </details>
 
 
+<!-- 명주님 꺼 -->
 <details>
-<summary>1. DB 컬렉션의 특정 필드 배열에 값이 추가되지 않고 수정되는 문제</summary>
+<summary>4. 카테고리버튼 클릭시, 페이지 로딩 후 해당 카테고리 버튼 active가 안되는 문제</summary>
 
-<!-- summary 아래 한칸 공백 두어야함 -->
+
 ## 오류 상황
 접은 내용
 
@@ -128,31 +198,6 @@
   
 </details>
 
-
-<details>
-<summary>1. DB 컬렉션의 특정 필드 배열에 값이 추가되지 않고 수정되는 문제</summary>
-
-<!-- summary 아래 한칸 공백 두어야함 -->
-## 오류 상황
-접은 내용
-
-## 오류 메시지
-접은 내용
-  
-  ## 시도
-```python
-
-```
-  
-  ## 원인 파악
-접은 내용
-  
-  ## 해결
-```python
-
-```
-  
-</details>
 
 
 
