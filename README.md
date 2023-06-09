@@ -36,20 +36,20 @@
 ![그림1](https://github.com/Team-DAEGU/today_food/assets/62596783/1315dfa2-68e9-48e5-82c6-1a5b561a2549)
 
 ## 🕹 API
-|기능|URL|Method|Resonse|Branch_Name|비고|
+|기능|URL|Method|Request|Resonse|비고|
 |------|---|---|------|---| -------|
-|전체 맛집 리스트 가져오기|[ALL LIST](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/)|GET|테스트1|테스트2|index||
-|카테고리별 맛집 리스트 가져오기|[LIST](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/list/<category>)|GET|테스트1|테스트2|feat/index-cardview||
-|게시글 작성(맛집 추천하기)|[POST](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/api/posts)|POST|테스트1|테스트2|posts||
-|게시글 상세(추천 맛집 상세 페이지)|[DETAIL](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/detail/<int:num>)|GET|테스트1|테스트2|detail|게시글의 num은 url 파라미터로 전달|
-|좋아요수 증가시키기|[LIKE](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/update/like)|POST|테스트1|테스트2|feat/like||
-|추천 맛집 포스팅 삭제|[DELETE](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/detail/<int:num>/delete)|PUT|테스트1|테스트2|detail/update|게시글의 num은 url 파라미터로 전달|
-|추천 맛집 포스팅 수정|[REVISE](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/detail/<int:num>/update)|DELETE|테스트1|테스트2|detail/delete|게시글의 num은 url 파라미터로 전달|
-|상세 페이지 댓글작성|[COMMENT](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/detail/<int:num>/reply)|POST|- reply : 게시글의 댓글 (문자열)|테스트2|detail/delete|게시글의 num은 url 파라미터로 전달|
+|전체 맛집 리스트 가져오기|[ALL LIST](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/)|GET||아래 확인||
+|카테고리별 맛집 리스트 가져오기|[LIST](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/list/<category>)|GET||아래 확인||
+|게시글 작성(맛집 추천하기)|[POST](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/api/posts)|POST|아래 확인|“msg”  : “등록 완료!”|posts||
+|게시글 상세(추천 맛집 상세 페이지)|[DETAIL](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/detail/<int:num>)|GET|테스트1|아래 확인|게시글의 num은 url 파라미터로 전달|
+|좋아요수 증가시키기|[LIKE](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/update/like)|POST|- num: 게시글 고유순번(int)|{“response”: “좋아요수 증가!”}||
+|추천 맛집 포스팅 삭제|[DELETE](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/detail/<int:num>/delete)|PUT|아래 확인|{“msg”  : “수정 완료!”}|게시글의 num은 url 파라미터로 전달|
+|추천 맛집 포스팅 수정|[REVISE](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/detail/<int:num>/update)|DELETE|- name : 게시글 작성자(문자열)</br>- password : 게시글 비밀번호(문자열)|{“msg”  : “삭제 완료!”}|게시글의 num은 url 파라미터로 전달|
+|상세 페이지 댓글작성|[COMMENT](http://today-food.eba-3kmhiuzp.ap-northeast-2.elasticbeanstalk.com/detail/<int:num>/reply)|POST|- reply : 게시글의 댓글 (문자열)|{“msg”  : “작 완료!”}|게시글의 num은 url 파라미터로 전달|
 
 ## Request
 <details>
-<summary>추천 맛집 글 작성회</summary>
+<summary>추천 맛집 글 작성</summary>
 - restaurant_name:  맛집 이름 (문자열)</br>
 - address: 주소 (문자열)</br>
 - category: 가게 종류 (문자열)</br>
