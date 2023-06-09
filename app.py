@@ -127,5 +127,12 @@ def delete_post(num):
         return jsonify({'msg':'입력하신 닉네임과, 비밀번호가 일치하지 않습니다!'}, 403)
     return jsonify({'msg':'삭제 완료!'})
 
+# 게시글 상세페이지에서 댓글 작성
+@app.route('/detail/<int:num>/reply', methods = ['POST'])
+def detail_reply(num):
+    get_reply = request.form['reply']
+    db.data.update_one({'num':num}, {'$push': {'reply':get_reply}})
+    return jsonify({'msg':'작성 완료'})
+
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5001, debug=True)
