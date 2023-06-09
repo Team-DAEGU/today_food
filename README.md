@@ -97,28 +97,43 @@ def detail_reply(num):
 
 
 <details>
-<summary>1. DB 컬렉션의 특정 필드 배열에 값이 추가되지 않고 수정되는 문제</summary>
+<summary>2.DB컬렉션에서 하나만 가져오기가 안되는 문제</summary>
 
 <!-- summary 아래 한칸 공백 두어야함 -->
 ## 오류 상황
-접은 내용
+MongoDB에서 받아오는 데이터를 동시에 여러가지 가져올 경우 작동하지만 한 가지 일 경우 가져오지 못하는 문제
 
 ## 오류 메시지
-접은 내용
+코드 동작은 정상적으로 하여 메세지는 나오지 않았다
   
   ## 시도
 ```python
-
+@app.route('/detail/<int:num>')
+def detail():
+    posts = collection.find()  # MongoDB에서 정보 가져오기
+    data_list = []
+    for post in posts:
+        data = {
+            'image_url': post.get('image_url', ''),
+            'address': post.get('address', ''),
+            'title': post.get('title', '')
+        }
+        data_list.append(data)
+    
+    return render_template('index.html', data_list=data_list)
 ```
   
   ## 원인 파악
-접은 내용
+for문은 데이터 확인을 위해 사용할 때는 좋았지만 하나만 정보를 가져올 때는 find_one을 하더라도 for문이면 정상적으로 돌아가지 않았다, 또한, 조건이 빠져있다.
   
   ## 해결
 ```python
-
+@app.route('/detail/<int:num>')
+def detail(num):
+    document = db.data.find_one({'num' : num})
+    return render_template('detail.html', data=document)
 ```
-  
+  for문을 제거하고 collection.find()를 collection.find_one()으로 바꿔 사용 후 조건({'num' : 1})을 추가하니 잘 작동하였다
 </details>
 
 
@@ -127,7 +142,7 @@ def detail_reply(num):
 
 <!-- summary 아래 한칸 공백 두어야함 -->
 ## 오류 상황
-접은 내용
+카카오맵 API를 사용하는과정에서, Geocoder 오류가 발생해서, 카카오맵에 마커와, 맵이 표시되지않음.
 
 ## 오류 메시지
 접은 내용
